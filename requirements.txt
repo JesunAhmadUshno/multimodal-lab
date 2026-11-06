@@ -1,0 +1,5 @@
+# multimodal-lab dependency manifest.
+# NumPy is the only third-party dependency, at the version used for
+# the recorded v1.0 runs (Learn README: Python 3.12.3, NumPy 1.26.4).
+# Everything else is the Python standard library.
+numpy==1.26.4
