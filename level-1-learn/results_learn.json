@@ -1,0 +1,36 @@
+{
+  "after_training": {
+    "image_to_text_recall_at_1": 0.983333,
+    "image_to_text_recall_at_5": 0.983333,
+    "text_to_image_recall_at_1": 1.0,
+    "text_to_image_recall_at_5": 1.0
+  },
+  "batch_pairs_per_step": 12,
+  "before_training": {
+    "image_to_text_recall_at_1": 0.05,
+    "image_to_text_recall_at_5": 0.05,
+    "text_to_image_recall_at_1": 0.0,
+    "text_to_image_recall_at_5": 0.416667
+  },
+  "combinations": 12,
+  "data": "synthetic teaching set (coloured shapes, programmatic)",
+  "data_is_public": false,
+  "embed_dim": 32,
+  "held_out_pairs": 120,
+  "image_shape": [
+    16,
+    16,
+    3
+  ],
+  "level": "1 Learn",
+  "master_seed": 42,
+  "project": "P22 multimodal-lab",
+  "recall_at_1_gain_image_to_text": 0.933333,
+  "recall_at_1_gain_text_to_image": 1.0,
+  "temperature": 0.1,
+  "train_loss_first": 3.124841,
+  "train_loss_last": 0.005265,
+  "train_pairs": 1200,
+  "training_steps": 2500,
+  "vocab_size": 9
+}
