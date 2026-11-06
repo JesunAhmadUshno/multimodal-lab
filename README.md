@@ -35,6 +35,17 @@ Method: synthetic teaching set, 1,200 train pairs and 120 held-out pairs over 12
 | Deep vision colour exact match (text 0.000) | 0.750 |
 | Deep vision count exact match (text 1.000) | 0.250 |
 
+## Fan-out
+
+Written fan-out set for v1.0, in fanout/: blog post, tutorial,
+website page copy, LinkedIn post draft (DRAFT NOT POSTED, link in
+the first comment), paper candidate, and release notes for
+v0.1, v0.5, and v1.0. Every piece states the honest scope: no
+VLM downloaded or run, the Learn encoder as a labelled stand-in,
+synthetic only, no public data claimed. Grades and channel
+outcomes are logged in PUBLICITY.md. Overall fan-out grade:
+9,457 of 10,000.
+
 ## Novelty
 
 PROPOSED. See NOVELTY.md. The novelty text is a draft until the Jev claim_check gate passes on it.
