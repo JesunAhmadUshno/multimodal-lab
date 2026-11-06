@@ -1,0 +1,487 @@
+{
+  "data": "synthetic evaluation set (coloured shapes, programmatic, held-out seeds)",
+  "data_is_public": false,
+  "eval_cases": 48,
+  "exact_match": 1.0,
+  "level": "2 Build",
+  "mean_token_f1": 1.0,
+  "per_case": [
+    {
+      "case_id": "b00-colour",
+      "exact_match": 1.0,
+      "labelled_answer": "red",
+      "predicted_answer": "red",
+      "question_type": "colour",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b00-shape",
+      "exact_match": 1.0,
+      "labelled_answer": "circle",
+      "predicted_answer": "circle",
+      "question_type": "shape",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b00-both",
+      "exact_match": 1.0,
+      "labelled_answer": "red circle",
+      "predicted_answer": "red circle",
+      "question_type": "both",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b00-count",
+      "exact_match": 1.0,
+      "labelled_answer": "one",
+      "predicted_answer": "one",
+      "question_type": "count",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b01-colour",
+      "exact_match": 1.0,
+      "labelled_answer": "red",
+      "predicted_answer": "red",
+      "question_type": "colour",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b01-shape",
+      "exact_match": 1.0,
+      "labelled_answer": "square",
+      "predicted_answer": "square",
+      "question_type": "shape",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b01-both",
+      "exact_match": 1.0,
+      "labelled_answer": "red square",
+      "predicted_answer": "red square",
+      "question_type": "both",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b01-count",
+      "exact_match": 1.0,
+      "labelled_answer": "one",
+      "predicted_answer": "one",
+      "question_type": "count",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b02-colour",
+      "exact_match": 1.0,
+      "labelled_answer": "red",
+      "predicted_answer": "red",
+      "question_type": "colour",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b02-shape",
+      "exact_match": 1.0,
+      "labelled_answer": "triangle",
+      "predicted_answer": "triangle",
+      "question_type": "shape",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b02-both",
+      "exact_match": 1.0,
+      "labelled_answer": "red triangle",
+      "predicted_answer": "red triangle",
+      "question_type": "both",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b02-count",
+      "exact_match": 1.0,
+      "labelled_answer": "one",
+      "predicted_answer": "one",
+      "question_type": "count",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b03-colour",
+      "exact_match": 1.0,
+      "labelled_answer": "green",
+      "predicted_answer": "green",
+      "question_type": "colour",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b03-shape",
+      "exact_match": 1.0,
+      "labelled_answer": "circle",
+      "predicted_answer": "circle",
+      "question_type": "shape",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b03-both",
+      "exact_match": 1.0,
+      "labelled_answer": "green circle",
+      "predicted_answer": "green circle",
+      "question_type": "both",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b03-count",
+      "exact_match": 1.0,
+      "labelled_answer": "one",
+      "predicted_answer": "one",
+      "question_type": "count",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b04-colour",
+      "exact_match": 1.0,
+      "labelled_answer": "green",
+      "predicted_answer": "green",
+      "question_type": "colour",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b04-shape",
+      "exact_match": 1.0,
+      "labelled_answer": "square",
+      "predicted_answer": "square",
+      "question_type": "shape",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b04-both",
+      "exact_match": 1.0,
+      "labelled_answer": "green square",
+      "predicted_answer": "green square",
+      "question_type": "both",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b04-count",
+      "exact_match": 1.0,
+      "labelled_answer": "one",
+      "predicted_answer": "one",
+      "question_type": "count",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b05-colour",
+      "exact_match": 1.0,
+      "labelled_answer": "green",
+      "predicted_answer": "green",
+      "question_type": "colour",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b05-shape",
+      "exact_match": 1.0,
+      "labelled_answer": "triangle",
+      "predicted_answer": "triangle",
+      "question_type": "shape",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b05-both",
+      "exact_match": 1.0,
+      "labelled_answer": "green triangle",
+      "predicted_answer": "green triangle",
+      "question_type": "both",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b05-count",
+      "exact_match": 1.0,
+      "labelled_answer": "one",
+      "predicted_answer": "one",
+      "question_type": "count",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b06-colour",
+      "exact_match": 1.0,
+      "labelled_answer": "blue",
+      "predicted_answer": "blue",
+      "question_type": "colour",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b06-shape",
+      "exact_match": 1.0,
+      "labelled_answer": "circle",
+      "predicted_answer": "circle",
+      "question_type": "shape",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b06-both",
+      "exact_match": 1.0,
+      "labelled_answer": "blue circle",
+      "predicted_answer": "blue circle",
+      "question_type": "both",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b06-count",
+      "exact_match": 1.0,
+      "labelled_answer": "one",
+      "predicted_answer": "one",
+      "question_type": "count",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b07-colour",
+      "exact_match": 1.0,
+      "labelled_answer": "blue",
+      "predicted_answer": "blue",
+      "question_type": "colour",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b07-shape",
+      "exact_match": 1.0,
+      "labelled_answer": "square",
+      "predicted_answer": "square",
+      "question_type": "shape",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b07-both",
+      "exact_match": 1.0,
+      "labelled_answer": "blue square",
+      "predicted_answer": "blue square",
+      "question_type": "both",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b07-count",
+      "exact_match": 1.0,
+      "labelled_answer": "one",
+      "predicted_answer": "one",
+      "question_type": "count",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b08-colour",
+      "exact_match": 1.0,
+      "labelled_answer": "blue",
+      "predicted_answer": "blue",
+      "question_type": "colour",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b08-shape",
+      "exact_match": 1.0,
+      "labelled_answer": "triangle",
+      "predicted_answer": "triangle",
+      "question_type": "shape",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b08-both",
+      "exact_match": 1.0,
+      "labelled_answer": "blue triangle",
+      "predicted_answer": "blue triangle",
+      "question_type": "both",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b08-count",
+      "exact_match": 1.0,
+      "labelled_answer": "one",
+      "predicted_answer": "one",
+      "question_type": "count",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b09-colour",
+      "exact_match": 1.0,
+      "labelled_answer": "yellow",
+      "predicted_answer": "yellow",
+      "question_type": "colour",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b09-shape",
+      "exact_match": 1.0,
+      "labelled_answer": "circle",
+      "predicted_answer": "circle",
+      "question_type": "shape",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b09-both",
+      "exact_match": 1.0,
+      "labelled_answer": "yellow circle",
+      "predicted_answer": "yellow circle",
+      "question_type": "both",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b09-count",
+      "exact_match": 1.0,
+      "labelled_answer": "one",
+      "predicted_answer": "one",
+      "question_type": "count",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b10-colour",
+      "exact_match": 1.0,
+      "labelled_answer": "yellow",
+      "predicted_answer": "yellow",
+      "question_type": "colour",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b10-shape",
+      "exact_match": 1.0,
+      "labelled_answer": "square",
+      "predicted_answer": "square",
+      "question_type": "shape",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b10-both",
+      "exact_match": 1.0,
+      "labelled_answer": "yellow square",
+      "predicted_answer": "yellow square",
+      "question_type": "both",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b10-count",
+      "exact_match": 1.0,
+      "labelled_answer": "one",
+      "predicted_answer": "one",
+      "question_type": "count",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b11-colour",
+      "exact_match": 1.0,
+      "labelled_answer": "yellow",
+      "predicted_answer": "yellow",
+      "question_type": "colour",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b11-shape",
+      "exact_match": 1.0,
+      "labelled_answer": "triangle",
+      "predicted_answer": "triangle",
+      "question_type": "shape",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b11-both",
+      "exact_match": 1.0,
+      "labelled_answer": "yellow triangle",
+      "predicted_answer": "yellow triangle",
+      "question_type": "both",
+      "schema_valid": true,
+      "token_f1": 1.0
+    },
+    {
+      "case_id": "b11-count",
+      "exact_match": 1.0,
+      "labelled_answer": "one",
+      "predicted_answer": "one",
+      "question_type": "count",
+      "schema_valid": true,
+      "token_f1": 1.0
+    }
+  ],
+  "per_question_type": {
+    "both": {
+      "cases": 12,
+      "exact_match": 1.0,
+      "mean_token_f1": 1.0
+    },
+    "colour": {
+      "cases": 12,
+      "exact_match": 1.0,
+      "mean_token_f1": 1.0
+    },
+    "count": {
+      "cases": 12,
+      "exact_match": 1.0,
+      "mean_token_f1": 1.0
+    },
+    "shape": {
+      "cases": 12,
+      "exact_match": 1.0,
+      "mean_token_f1": 1.0
+    }
+  },
+  "project": "P22 multimodal-lab",
+  "schema_pass": 48,
+  "schema_pass_rate": 1.0,
+  "tokenization": {
+    "audio_frames_measured": 0,
+    "caption_text_tokens": 3,
+    "image_patches": 16,
+    "patch_size": 4,
+    "question_text_tokens": {
+      "both": 8,
+      "colour": 5,
+      "count": 7,
+      "shape": 6
+    },
+    "unified_tokens_example_colour_question": 22,
+    "visual_tokens_with_class_token": 17
+  },
+  "train_loss_first": 3.574392,
+  "train_loss_last": 0.005415,
+  "train_pairs": 1200,
+  "training_steps": 2500,
+  "vlm_substitution": "learn_encoder_stand_in: no VLM was downloaded or run; see BUILD-SPEC.md",
+  "vlm_used": false
+}
