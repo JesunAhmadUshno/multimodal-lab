@@ -12,9 +12,8 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import numpy as np  # noqa: E402
-
 import clip_numpy as clip  # noqa: E402
+import numpy as np  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 EPOCHS = 2500

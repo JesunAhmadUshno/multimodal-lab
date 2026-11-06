@@ -16,8 +16,8 @@ sys.path.insert(0, _HERE)
 sys.path.insert(0, os.path.join(_HERE, "..", "level-1-learn"))
 sys.path.insert(0, os.path.join(_HERE, "..", "level-2-build"))
 import clip_numpy as clip  # noqa: E402
-import qa_service as qa  # noqa: E402
 import deep_eval as deep  # noqa: E402
+import qa_service as qa  # noqa: E402
 
 
 def _slot():
