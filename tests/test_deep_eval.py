@@ -6,10 +6,10 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "level-3-deep"))
 sys.path.insert(0, os.path.join(ROOT, "level-2-build"))
 sys.path.insert(0, os.path.join(ROOT, "level-1-learn"))
-import numpy as np  # noqa: E402
 import clip_numpy as clip  # noqa: E402
-import qa_service as qa  # noqa: E402
 import deep_eval as deep  # noqa: E402
+import numpy as np  # noqa: E402
+import qa_service as qa  # noqa: E402
 
 passed = 0
 
