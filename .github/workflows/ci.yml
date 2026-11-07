@@ -36,3 +36,5 @@ jobs:
         run: python tests/test_deep_eval.py
       - name: Deep runner
         run: python level-3-deep/run_deep.py
+      - name: Analysis tests (seeds, paired statistics)
+        run: python tests/test_analysis.py

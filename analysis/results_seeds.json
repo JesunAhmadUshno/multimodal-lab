@@ -1,0 +1,389 @@
+{
+  "analysis": "seed sensitivity (encoder init seed only) and Learn confusion",
+  "data_is_public": false,
+  "deep_text_route": "deterministic parser, seed-independent: see results_deep.json",
+  "deep_vision_em_per_seed": [
+    {
+      "both": 0.375,
+      "colour": 0.75,
+      "count": 0.25,
+      "left_shape": 0.375,
+      "overall": 0.354167,
+      "seed": 42,
+      "shape": 0.375,
+      "title": 0.0
+    },
+    {
+      "both": 0.416667,
+      "colour": 0.75,
+      "count": 0.25,
+      "left_shape": 0.416667,
+      "overall": 0.375,
+      "seed": 1,
+      "shape": 0.416667,
+      "title": 0.0
+    },
+    {
+      "both": 0.458333,
+      "colour": 0.75,
+      "count": 0.25,
+      "left_shape": 0.458333,
+      "overall": 0.395833,
+      "seed": 2,
+      "shape": 0.458333,
+      "title": 0.0
+    },
+    {
+      "both": 0.375,
+      "colour": 0.75,
+      "count": 0.25,
+      "left_shape": 0.375,
+      "overall": 0.354167,
+      "seed": 3,
+      "shape": 0.375,
+      "title": 0.0
+    },
+    {
+      "both": 0.416667,
+      "colour": 0.75,
+      "count": 0.25,
+      "left_shape": 0.416667,
+      "overall": 0.375,
+      "seed": 4,
+      "shape": 0.416667,
+      "title": 0.0
+    }
+  ],
+  "deep_vision_em_summary": {
+    "both": {
+      "max": 0.458333,
+      "mean": 0.408333,
+      "min": 0.375,
+      "sd": 0.034861
+    },
+    "colour": {
+      "max": 0.75,
+      "mean": 0.75,
+      "min": 0.75,
+      "sd": 0.0
+    },
+    "count": {
+      "max": 0.25,
+      "mean": 0.25,
+      "min": 0.25,
+      "sd": 0.0
+    },
+    "left_shape": {
+      "max": 0.458333,
+      "mean": 0.408333,
+      "min": 0.375,
+      "sd": 0.034861
+    },
+    "overall": {
+      "max": 0.395833,
+      "mean": 0.370833,
+      "min": 0.354167,
+      "sd": 0.01743
+    },
+    "shape": {
+      "max": 0.458333,
+      "mean": 0.408333,
+      "min": 0.375,
+      "sd": 0.034861
+    },
+    "title": {
+      "max": 0.0,
+      "mean": 0.0,
+      "min": 0.0,
+      "sd": 0.0
+    }
+  },
+  "learn_confusion_seed_42": {
+    "errors": [
+      {
+        "count": 1,
+        "gold": "red circle",
+        "predicted": "red square"
+      },
+      {
+        "count": 1,
+        "gold": "green square",
+        "predicted": "green circle"
+      }
+    ],
+    "labels": [
+      "red circle",
+      "red square",
+      "red triangle",
+      "green circle",
+      "green square",
+      "green triangle",
+      "blue circle",
+      "blue square",
+      "blue triangle",
+      "yellow circle",
+      "yellow square",
+      "yellow triangle"
+    ],
+    "matrix_rows_gold_cols_predicted": [
+      [
+        9,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        10,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        10,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        10,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        9,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        10,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        10,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        10,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        10,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        10,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        10,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        10
+      ]
+    ],
+    "note": "Held-out captions repeat 10 times per combination and identical captions get identical embeddings, so an image's top 5 captions are always 5 copies of one caption: image-to-text Recall at 5 equals Recall at 1 by construction.",
+    "seed": 42
+  },
+  "learn_per_seed": [
+    {
+      "image_to_text_recall_at_1": 0.983333,
+      "image_to_text_recall_at_5": 0.983333,
+      "seed": 42,
+      "text_to_image_recall_at_1": 1.0,
+      "text_to_image_recall_at_5": 1.0,
+      "train_loss_first": 3.124841,
+      "train_loss_last": 0.005265
+    },
+    {
+      "image_to_text_recall_at_1": 0.975,
+      "image_to_text_recall_at_5": 0.975,
+      "seed": 1,
+      "text_to_image_recall_at_1": 1.0,
+      "text_to_image_recall_at_5": 1.0,
+      "train_loss_first": 3.372638,
+      "train_loss_last": 0.005245
+    },
+    {
+      "image_to_text_recall_at_1": 0.991667,
+      "image_to_text_recall_at_5": 0.991667,
+      "seed": 2,
+      "text_to_image_recall_at_1": 1.0,
+      "text_to_image_recall_at_5": 1.0,
+      "train_loss_first": 3.510063,
+      "train_loss_last": 0.005387
+    },
+    {
+      "image_to_text_recall_at_1": 1.0,
+      "image_to_text_recall_at_5": 1.0,
+      "seed": 3,
+      "text_to_image_recall_at_1": 1.0,
+      "text_to_image_recall_at_5": 1.0,
+      "train_loss_first": 3.444275,
+      "train_loss_last": 0.005303
+    },
+    {
+      "image_to_text_recall_at_1": 1.0,
+      "image_to_text_recall_at_5": 1.0,
+      "seed": 4,
+      "text_to_image_recall_at_1": 1.0,
+      "text_to_image_recall_at_5": 1.0,
+      "train_loss_first": 3.137774,
+      "train_loss_last": 0.005603
+    }
+  ],
+  "learn_summary": {
+    "image_to_text_recall_at_1": {
+      "max": 1.0,
+      "mean": 0.99,
+      "min": 0.975,
+      "sd": 0.010865
+    },
+    "image_to_text_recall_at_5": {
+      "max": 1.0,
+      "mean": 0.99,
+      "min": 0.975,
+      "sd": 0.010865
+    },
+    "text_to_image_recall_at_1": {
+      "max": 1.0,
+      "mean": 1.0,
+      "min": 1.0,
+      "sd": 0.0
+    },
+    "text_to_image_recall_at_5": {
+      "max": 1.0,
+      "mean": 1.0,
+      "min": 1.0,
+      "sd": 0.0
+    },
+    "train_loss_last": {
+      "max": 0.005603,
+      "mean": 0.005361,
+      "min": 0.005245,
+      "sd": 0.000146
+    }
+  },
+  "project": "P22 multimodal-lab",
+  "seeds": [
+    42,
+    1,
+    2,
+    3,
+    4
+  ],
+  "vlm_used": false
+}
