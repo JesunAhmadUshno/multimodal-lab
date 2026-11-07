@@ -19,3 +19,15 @@ Deep closed at grade 8,000 of 10,000 (compressed Deep): an eval study on 24 synt
 ## Future
 
 Open problems and the project's next steps sit in the Deep level scope in SPEC.md. Any forecast about this field is [unverified] unless a dated primary source is added here at the wave update.
+
+## References (added 2026-11-07)
+
+Primary sources for the methods used in this repo. See docs/research-review.md for how each one is used.
+
+- CLIP, the dual-encoder design that Learn rebuilds: Radford, A. et al. (2021). Learning Transferable Visual Models From Natural Language Supervision. arXiv:2103.00020.
+- InfoNCE, the contrastive loss in clip_numpy.py: van den Oord, A., Li, Y. and Vinyals, O. (2018). Representation Learning with Contrastive Predictive Coding. arXiv:1807.03748.
+- LLaVA, the design inspected in level-1-learn/ANATOMY.md: Liu, H., Li, C., Wu, Q. and Lee, Y. J. (2023). Visual Instruction Tuning. arXiv:2304.08485.
+- LLaVA-1.5: Liu, H., Li, C., Li, Y. and Lee, Y. J. (2023). Improved Baselines with Visual Instruction Tuning. arXiv:2310.03744.
+- Adam, the optimiser in clip_numpy.py: Kingma, D. P. and Ba, J. (2014). Adam: A Method for Stochastic Optimization. arXiv:1412.6980.
+- McNemar's test, used in analysis/paired_stats.py: McNemar, Q. (1947). Psychometrika 12(2), 153-157.
+- The bootstrap, used in analysis/paired_stats.py: Efron, B. (1979). Bootstrap Methods: Another Look at the Jackknife. Annals of Statistics 7(1), 1-26.
