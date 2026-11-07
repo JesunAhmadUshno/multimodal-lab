@@ -110,4 +110,13 @@ for (const [label, value] of [
   ['Deep vision count exact match (text 1.000)', deep.per_question_type.count.vision_exact_match.toFixed(3)],
 ]) assert.ok(readme.includes(`| ${label} | ${value} |`), `README row ${label} = ${value}`);
 
+// README post-v1.0 section cites analysis/results_*.json
+const f3 = (x) => x.toFixed(3);
+for (const frag of [
+  `Recall at 1 is ${f3(seeds.learn_summary.image_to_text_recall_at_1.mean)} mean (sd ${f3(seeds.learn_summary.image_to_text_recall_at_1.sd)}`,
+  `Deep vision exact match ${f3(seeds.deep_vision_em_summary.overall.mean)} mean (sd ${f3(seeds.deep_vision_em_summary.overall.sd)}`,
+  `largest p ${Math.max(...Object.values(stats.per_question_type).map((v) => v.mcnemar.p_value)).toFixed(4)}`,
+  `CI of ${f3(stats.overall.vision_em_ci95[0])} to ${f3(stats.overall.vision_em_ci95[1])}`,
+]) assert.ok(readme.includes(frag), `README cites ${frag}`);
+
 console.log('lab ok', { text_em: deep.overall.text_exact_match, live_steps: tr.steps, live_after: after, ms: Date.now() - t0 });
