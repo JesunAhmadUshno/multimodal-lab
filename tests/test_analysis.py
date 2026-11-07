@@ -7,6 +7,7 @@ import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "analysis"))
+import count_baseline as cb  # noqa: E402
 import paired_stats as ps  # noqa: E402
 
 
@@ -53,8 +54,23 @@ def test_seed_42_reproduces_recorded_runs():
     assert errors == round((1 - learn["after_training"]["image_to_text_recall_at_1"]) * 120)
 
 
+def test_count_baseline_regions():
+    import numpy as np
+    img = np.full((16, 16, 3), 0.05)
+    img[1:3, 1:3] = 0.9
+    img[10:12, 10:12] = 0.9
+    assert cb.count_regions(img.reshape(-1)) == 2
+    img[3:10, 2] = 0.9  # a 4-connected bridge joins the two blobs
+    img[9, 2:11] = 0.9
+    assert cb.count_regions(img.reshape(-1)) == 1
+    rec = load("analysis", "results_count_baseline.json")
+    assert rec["cases"] == 24
+    assert all(r["regions"] == r["item_count"] for r in rec["per_case"] if r["item_count"] != 3)
+
+
 if __name__ == "__main__":
     test_mcnemar_hand_values()
     test_stats_match_recorded_deep_summaries()
     test_seed_42_reproduces_recorded_runs()
-    print("analysis tests: PASS, 3 checks")
+    test_count_baseline_regions()
+    print("analysis tests: PASS, 4 checks")

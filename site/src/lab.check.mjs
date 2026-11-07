@@ -8,6 +8,7 @@ import * as L from './lab.js';
 const root = new URL('../../', import.meta.url);
 const json = (p) => JSON.parse(fs.readFileSync(new URL(p, root), 'utf8'));
 const learn = json('level-1-learn/results_learn.json'), build = json('level-2-build/results_build.json');
+const countBase = json('analysis/results_count_baseline.json');
 const deep = json('level-3-deep/results_deep.json'), stats = json('analysis/results_stats.json'), seeds = json('analysis/results_seeds.json');
 const near = (a, b, tol, msg) => assert.ok(Math.abs(a - b) <= tol, `${msg}: ${a} vs ${b}`);
 const r6 = (x) => Math.round(x * 1e6) / 1e6;
@@ -116,6 +117,7 @@ for (const frag of [
   `Recall at 1 is ${f3(seeds.learn_summary.image_to_text_recall_at_1.mean)} mean (sd ${f3(seeds.learn_summary.image_to_text_recall_at_1.sd)}`,
   `Deep vision exact match ${f3(seeds.deep_vision_em_summary.overall.mean)} mean (sd ${f3(seeds.deep_vision_em_summary.overall.sd)}`,
   `largest p ${Math.max(...Object.values(stats.per_question_type).map((v) => v.mcnemar.p_value)).toFixed(4)}`,
+  `scores ${f3(countBase.exact_match)} exact match on the ${countBase.cases} count questions`,
   `CI of ${f3(stats.overall.vision_em_ci95[0])} to ${f3(stats.overall.vision_em_ci95[1])}`,
 ]) assert.ok(readme.includes(frag), `README cites ${frag}`);
 

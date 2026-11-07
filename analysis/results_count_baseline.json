@@ -1,0 +1,207 @@
+{
+  "analysis": "enumeration baseline (connected regions) on the Deep count questions",
+  "cases": 24,
+  "data_is_public": false,
+  "exact_match": 0.75,
+  "exact_match_by_gold_items": {
+    "1": 1.0,
+    "2": 1.0,
+    "3": 0.0,
+    "4": 1.0
+  },
+  "per_case": [
+    {
+      "answer": "one",
+      "doc_id": "d00",
+      "exact_match": 1.0,
+      "item_count": 1,
+      "labelled_answer": "one",
+      "regions": 1
+    },
+    {
+      "answer": "two",
+      "doc_id": "d01",
+      "exact_match": 1.0,
+      "item_count": 2,
+      "labelled_answer": "two",
+      "regions": 2
+    },
+    {
+      "answer": "two",
+      "doc_id": "d02",
+      "exact_match": 0.0,
+      "item_count": 3,
+      "labelled_answer": "three",
+      "regions": 2
+    },
+    {
+      "answer": "four",
+      "doc_id": "d03",
+      "exact_match": 1.0,
+      "item_count": 4,
+      "labelled_answer": "four",
+      "regions": 4
+    },
+    {
+      "answer": "one",
+      "doc_id": "d04",
+      "exact_match": 1.0,
+      "item_count": 1,
+      "labelled_answer": "one",
+      "regions": 1
+    },
+    {
+      "answer": "two",
+      "doc_id": "d05",
+      "exact_match": 1.0,
+      "item_count": 2,
+      "labelled_answer": "two",
+      "regions": 2
+    },
+    {
+      "answer": "one",
+      "doc_id": "d06",
+      "exact_match": 0.0,
+      "item_count": 3,
+      "labelled_answer": "three",
+      "regions": 1
+    },
+    {
+      "answer": "four",
+      "doc_id": "d07",
+      "exact_match": 1.0,
+      "item_count": 4,
+      "labelled_answer": "four",
+      "regions": 4
+    },
+    {
+      "answer": "one",
+      "doc_id": "d08",
+      "exact_match": 1.0,
+      "item_count": 1,
+      "labelled_answer": "one",
+      "regions": 1
+    },
+    {
+      "answer": "two",
+      "doc_id": "d09",
+      "exact_match": 1.0,
+      "item_count": 2,
+      "labelled_answer": "two",
+      "regions": 2
+    },
+    {
+      "answer": "two",
+      "doc_id": "d10",
+      "exact_match": 0.0,
+      "item_count": 3,
+      "labelled_answer": "three",
+      "regions": 2
+    },
+    {
+      "answer": "four",
+      "doc_id": "d11",
+      "exact_match": 1.0,
+      "item_count": 4,
+      "labelled_answer": "four",
+      "regions": 4
+    },
+    {
+      "answer": "one",
+      "doc_id": "d12",
+      "exact_match": 1.0,
+      "item_count": 1,
+      "labelled_answer": "one",
+      "regions": 1
+    },
+    {
+      "answer": "two",
+      "doc_id": "d13",
+      "exact_match": 1.0,
+      "item_count": 2,
+      "labelled_answer": "two",
+      "regions": 2
+    },
+    {
+      "answer": "two",
+      "doc_id": "d14",
+      "exact_match": 0.0,
+      "item_count": 3,
+      "labelled_answer": "three",
+      "regions": 2
+    },
+    {
+      "answer": "four",
+      "doc_id": "d15",
+      "exact_match": 1.0,
+      "item_count": 4,
+      "labelled_answer": "four",
+      "regions": 4
+    },
+    {
+      "answer": "one",
+      "doc_id": "d16",
+      "exact_match": 1.0,
+      "item_count": 1,
+      "labelled_answer": "one",
+      "regions": 1
+    },
+    {
+      "answer": "two",
+      "doc_id": "d17",
+      "exact_match": 1.0,
+      "item_count": 2,
+      "labelled_answer": "two",
+      "regions": 2
+    },
+    {
+      "answer": "one",
+      "doc_id": "d18",
+      "exact_match": 0.0,
+      "item_count": 3,
+      "labelled_answer": "three",
+      "regions": 1
+    },
+    {
+      "answer": "four",
+      "doc_id": "d19",
+      "exact_match": 1.0,
+      "item_count": 4,
+      "labelled_answer": "four",
+      "regions": 4
+    },
+    {
+      "answer": "one",
+      "doc_id": "d20",
+      "exact_match": 1.0,
+      "item_count": 1,
+      "labelled_answer": "one",
+      "regions": 1
+    },
+    {
+      "answer": "two",
+      "doc_id": "d21",
+      "exact_match": 1.0,
+      "item_count": 2,
+      "labelled_answer": "two",
+      "regions": 2
+    },
+    {
+      "answer": "two",
+      "doc_id": "d22",
+      "exact_match": 0.0,
+      "item_count": 3,
+      "labelled_answer": "three",
+      "regions": 2
+    },
+    {
+      "answer": "four",
+      "doc_id": "d23",
+      "exact_match": 1.0,
+      "item_count": 4,
+      "labelled_answer": "four",
+      "regions": 4
+    }
+  ],
+  "project": "P22 multimodal-lab"
+}

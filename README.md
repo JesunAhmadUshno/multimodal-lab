@@ -41,9 +41,12 @@ Method: synthetic teaching set, 1,200 train pairs and 120 held-out pairs over 12
 
 Added after v1.0, in analysis/ (CPU, NumPy, under a minute, tests in tests/test_analysis.py). Full grading in docs/research-review.md.
 
+Tests run as scripts (`for t in tests/test_*.py; do python3 $t; done`, as CI does); `pytest` alone collects only the functions named `test_*`.
+
 - Seed sensitivity (analysis/results_seeds.json): over five encoder seeds (42, 1, 2, 3, 4), Learn image-to-text Recall at 1 is 0.990 mean (sd 0.011, range 0.975 to 1.000), text-to-image 1.000 at every seed, and Deep vision exact match 0.371 mean (sd 0.017, range 0.354 to 0.396). Seed 42 reproduces the recorded runs.
 - Learn confusion at seed 42: the two held-out misses are one red circle read as red square and one green square read as green circle. Image-to-text Recall at 5 equals Recall at 1 by construction, because the held-out captions repeat.
 - Paired statistics (analysis/results_stats.json): the exact McNemar test finds every per-type route difference significant on this synthetic set (largest p 0.0039, both). Overall vision exact match 0.354 has a document-bootstrap 95% CI of 0.229 to 0.486. Count exact match by gold item count is 1.000 for one item and 0.000 for two, three and four.
+- Enumeration baseline (analysis/results_count_baseline.json): counting 4-connected non-background regions in each figure, with no learning, scores 0.750 exact match on the 24 count questions (1.000 for one, two and four items, 0.000 for three). The pixels carry most counts, so the constant-one composer is the main cause of the failure class; the three-item slots draw adjacent shapes touching, which merges them, a second, data-side flaw in the v1.0 document set.
 
 ## Fan-out
 

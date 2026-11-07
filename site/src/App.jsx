@@ -4,6 +4,7 @@ import build from '../../level-2-build/results_build.json';
 import deep from '../../level-3-deep/results_deep.json';
 import seeds from '../../analysis/results_seeds.json';
 import stats from '../../analysis/results_stats.json';
+import countBase from '../../analysis/results_count_baseline.json';
 import anatomyMd from '../../level-1-learn/ANATOMY.md?raw';
 import roadmapMd from '../../ROADMAP.md?raw';
 import summaryMd from '../../docs/index.md?raw';
@@ -492,7 +493,7 @@ function Study({ model }) {
 function Counting() {
   const rows = deep.per_case.filter((r) => r.question_type === 'count');
   const byN = [1, 2, 3, 4].map((n) => { const r = rows.filter((x) => x.item_count === n); return { n, cases: r.length, v: L.mean(r.map((x) => x.vision_exact_match)), t: L.mean(r.map((x) => x.text_exact_match)), ans: [...new Set(r.map((x) => x.vision_answer))].join(', ') }; });
-  const W = 460, H = 220, pad = { l: 36, r: 10, t: 14, b: 40 }, gw = (W - pad.l - pad.r) / 4, bw = gw / 3;
+  const W = 460, H = 220, pad = { l: 36, r: 10, t: 14, b: 40 }, gw = (W - pad.l - pad.r) / 4, bw = gw / 4;
   const y = (v) => pad.t + (1 - v) * (H - pad.t - pad.b);
   const overall = deep.per_question_type.count.vision_exact_match;
   return (
@@ -506,13 +507,15 @@ function Counting() {
             {byN.map((g, i) => (
               <g key={g.n} transform={`translate(${pad.l + i * gw} 0)`}>
                 <rect x={bw * 0.4} y={y(g.v)} width={bw} height={Math.max(1.5, y(0) - y(g.v))} rx="3" fill="var(--primary)" />
-                <rect x={bw * 1.6} y={y(g.t)} width={bw} height={y(0) - y(g.t)} rx="3" fill="var(--good)" />
+                <rect x={bw * 1.5} y={y(g.t)} width={bw} height={y(0) - y(g.t)} rx="3" fill="var(--good)" />
+                <rect x={bw * 2.6} y={y(countBase.exact_match_by_gold_items[g.n])} width={bw} height={Math.max(1.5, y(0) - y(countBase.exact_match_by_gold_items[g.n]))} rx="3" fill="var(--warn)" />
                 <text x={gw / 2} y={H - 22} textAnchor="middle" style={{ fill: 'var(--text)' }}>{g.n} item{g.n > 1 ? 's' : ''}</text>
                 <text x={gw / 2} y={H - 8} textAnchor="middle">vision said “{g.ans}”</text>
               </g>
             ))}
           </svg>
-          <div className="legend"><span><i style={{ background: 'var(--primary)' }} />vision exact match</span><span><i style={{ background: 'var(--good)' }} />text exact match</span></div>
+          <div className="legend"><span><i style={{ background: 'var(--primary)' }} />vision exact match</span><span><i style={{ background: 'var(--good)' }} />text exact match</span><span><i style={{ background: 'var(--warn)' }} />region-count baseline</span></div>
+          <p className="hint">All bars recorded: <code>results_deep.json</code> and <code>analysis/results_count_baseline.json</code>.</p>
         </div>
         <div>
           <p className="sub" style={{ marginTop: 0 }}>
@@ -520,7 +523,8 @@ function Counting() {
             This is not an empirical surprise but a property of the code: the composer has no enumeration step. The lines below are read from <a href={blob('level-2-build/qa_service.py')}>qa_service.py</a> at build time.
           </p>
           <pre className="code">{countBranch}</pre>
-          <p className="hint">The text parser gets {f3(deep.per_question_type.count.text_exact_match)} because the legend lists one shape name per item. The fix (an enumeration step before the composer) is v1.1 backlog item 3, not built here.</p>
+          <p className="hint">The text parser gets {f3(deep.per_question_type.count.text_exact_match)} because the legend lists one shape name per item.
+            A new enumeration baseline, <a href={blob('analysis/count_baseline.py')}>count_baseline.py</a>, simply counts connected non-background regions: {f3(countBase.exact_match)} exact match with no learning. So the pixels carry most counts. It fails on every three-item figure because those slots draw neighbouring shapes touching, a flaw in the document set itself. A learned enumeration step in the service remains v1.1 backlog item 3.</p>
         </div>
       </div>
     </section>
@@ -654,7 +658,7 @@ function Limits() {
   const items = [
     ['No real VLM', `The vision route is the Learn encoder plus a keyword composer (${L.SOURCE}). The original question, VLM against text pipeline, is still open.`],
     ['Synthetic, designed data', `The text layer answers ${textCovered} of ${L.QUESTION_TYPES.length} question types by design, so the overall text win is partly built in.`],
-    ['Counting is a code property', 'Count is constant one in the composer; the failure is true by construction, and no enumeration baseline was tried.'],
+    ['Counting is a code property', `Count is constant one in the composer, so the failure is true by construction. A region-count baseline added here scores ${f3(countBase.exact_match)}; the service itself still has no enumeration step.`],
     ['Weak generalisation probe', 'Held-out pairs come from the same generator, varying only position and size.'],
     ['Small samples', `${deep.per_question_type.colour.cases} cases per question type. Intervals above are wide; the overall McNemar test ignores document clustering.`],
     ['Untested failure classes', 'Small text was not measured, and spatial relations appear in one question type only.'],
