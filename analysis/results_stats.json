@@ -1,0 +1,206 @@
+{
+  "analysis": "paired statistics over results_deep.json per_case (no rerun)",
+  "bootstrap_resamples": 10000,
+  "bootstrap_seed": 20261107,
+  "count_by_gold_items": {
+    "1": {
+      "cases": 6,
+      "text_em": 1.0,
+      "vision_answers": [
+        "one"
+      ],
+      "vision_em": 1.0
+    },
+    "2": {
+      "cases": 6,
+      "text_em": 1.0,
+      "vision_answers": [
+        "one"
+      ],
+      "vision_em": 0.0
+    },
+    "3": {
+      "cases": 6,
+      "text_em": 1.0,
+      "vision_answers": [
+        "one"
+      ],
+      "vision_em": 0.0
+    },
+    "4": {
+      "cases": 6,
+      "text_em": 1.0,
+      "vision_answers": [
+        "one"
+      ],
+      "vision_em": 0.0
+    }
+  },
+  "mcnemar": "exact two-sided binomial test on discordant pairs",
+  "overall": {
+    "bootstrap_unit": "document (24 clusters of 6 cases)",
+    "cases": 144,
+    "difference_ci95": [
+      -0.4375,
+      -0.180556
+    ],
+    "mcnemar": {
+      "discordant": 99,
+      "p_value": 6.9006990857724845e-06,
+      "text_only_correct": 72,
+      "vision_only_correct": 27
+    },
+    "text_em": 0.666667,
+    "text_em_ci95": [
+      0.666667,
+      0.666667
+    ],
+    "vision_em": 0.354167,
+    "vision_em_ci95": [
+      0.229167,
+      0.486111
+    ]
+  },
+  "per_question_type": {
+    "both": {
+      "cases": 24,
+      "difference_ci95": [
+        0.208333,
+        0.583333
+      ],
+      "mcnemar": {
+        "discordant": 9,
+        "p_value": 0.00390625,
+        "text_only_correct": 0,
+        "vision_only_correct": 9
+      },
+      "text_em": 0.0,
+      "text_em_ci95": [
+        0.0,
+        0.0
+      ],
+      "vision_em": 0.375,
+      "vision_em_ci95": [
+        0.208333,
+        0.583333
+      ]
+    },
+    "colour": {
+      "cases": 24,
+      "difference_ci95": [
+        0.583333,
+        0.916667
+      ],
+      "mcnemar": {
+        "discordant": 18,
+        "p_value": 7.62939453125e-06,
+        "text_only_correct": 0,
+        "vision_only_correct": 18
+      },
+      "text_em": 0.0,
+      "text_em_ci95": [
+        0.0,
+        0.0
+      ],
+      "vision_em": 0.75,
+      "vision_em_ci95": [
+        0.583333,
+        0.916667
+      ]
+    },
+    "count": {
+      "cases": 24,
+      "difference_ci95": [
+        -0.916667,
+        -0.583333
+      ],
+      "mcnemar": {
+        "discordant": 18,
+        "p_value": 7.62939453125e-06,
+        "text_only_correct": 18,
+        "vision_only_correct": 0
+      },
+      "text_em": 1.0,
+      "text_em_ci95": [
+        1.0,
+        1.0
+      ],
+      "vision_em": 0.25,
+      "vision_em_ci95": [
+        0.083333,
+        0.416667
+      ]
+    },
+    "left_shape": {
+      "cases": 24,
+      "difference_ci95": [
+        -0.833333,
+        -0.416667
+      ],
+      "mcnemar": {
+        "discordant": 15,
+        "p_value": 6.103515625e-05,
+        "text_only_correct": 15,
+        "vision_only_correct": 0
+      },
+      "text_em": 1.0,
+      "text_em_ci95": [
+        1.0,
+        1.0
+      ],
+      "vision_em": 0.375,
+      "vision_em_ci95": [
+        0.166667,
+        0.583333
+      ]
+    },
+    "shape": {
+      "cases": 24,
+      "difference_ci95": [
+        -0.791667,
+        -0.416667
+      ],
+      "mcnemar": {
+        "discordant": 15,
+        "p_value": 6.103515625e-05,
+        "text_only_correct": 15,
+        "vision_only_correct": 0
+      },
+      "text_em": 1.0,
+      "text_em_ci95": [
+        1.0,
+        1.0
+      ],
+      "vision_em": 0.375,
+      "vision_em_ci95": [
+        0.208333,
+        0.583333
+      ]
+    },
+    "title": {
+      "cases": 24,
+      "difference_ci95": [
+        -1.0,
+        -1.0
+      ],
+      "mcnemar": {
+        "discordant": 24,
+        "p_value": 1.1920928955078125e-07,
+        "text_only_correct": 24,
+        "vision_only_correct": 0
+      },
+      "text_em": 1.0,
+      "text_em_ci95": [
+        1.0,
+        1.0
+      ],
+      "vision_em": 0.0,
+      "vision_em_ci95": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "project": "P22 multimodal-lab",
+  "source": "level-3-deep/results_deep.json"
+}
