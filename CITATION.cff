@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "multimodal-lab: a stand-in vision route against a text-only parser on synthetic documents"
+authors:
+  - family-names: Ushno
+    given-names: Jesun Ahmad
+repository-code: "https://github.com/JesunAhmadUshno/multimodal-lab"
+url: "https://jesunahmadushno.github.io/multimodal-lab/"
+license: Apache-2.0
+date-released: 2026-11-08

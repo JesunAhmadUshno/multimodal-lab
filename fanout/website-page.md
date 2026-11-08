@@ -22,8 +22,7 @@ stand-in. Every dataset is synthetic only, and no public data
 is claimed.
 
 Status: v1.0, 2026-11-05. Learn, Build, and Deep are done.
-Grades on the house 10,000 scale: Learn 8,700, Build 8,200,
-Deep 8,000. Total tests: 59 checks, plus the scaffold smoke test.
+Total tests: 59 checks, plus the scaffold smoke test.
 
 ## Results (all synthetic)
 

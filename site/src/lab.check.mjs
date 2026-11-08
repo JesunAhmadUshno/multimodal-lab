@@ -98,8 +98,8 @@ const liveDeep = L.runDeep(tr.params);
 assert.ok(liveDeep.filter((r) => r.question_type === 'count' && r.item_count > 1).every((r) => r.vision_answer === 'one'));
 assert.ok(liveDeep.filter((r) => r.question_type === 'title').every((r) => r.vision_answer === 'unsupported question'));
 
-// 7. Recorded imports equal the README benchmark table.
-const readme = fs.readFileSync(new URL('README.md', root), 'utf8');
+// 7. Recorded imports equal the benchmark table kept in REPORT.md (Appendix B, former README).
+const readme = fs.readFileSync(new URL('REPORT.md', root), 'utf8');
 for (const [label, value] of [
   ['Learn train loss, first step to last step', `${learn.train_loss_first} to ${learn.train_loss_last}`],
   ['Learn image-to-text Recall at 1, before to after', `${learn.before_training.image_to_text_recall_at_1.toFixed(6)} to ${learn.after_training.image_to_text_recall_at_1.toFixed(6)}`],
@@ -111,7 +111,7 @@ for (const [label, value] of [
   ['Deep vision count exact match (text 1.000)', deep.per_question_type.count.vision_exact_match.toFixed(3)],
 ]) assert.ok(readme.includes(`| ${label} | ${value} |`), `README row ${label} = ${value}`);
 
-// README post-v1.0 section cites analysis/results_*.json
+// REPORT.md post-v1.0 section cites analysis/results_*.json
 const f3 = (x) => x.toFixed(3);
 for (const frag of [
   `Recall at 1 is ${f3(seeds.learn_summary.image_to_text_recall_at_1.mean)} mean (sd ${f3(seeds.learn_summary.image_to_text_recall_at_1.sd)}`,

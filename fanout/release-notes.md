@@ -19,7 +19,6 @@ https://github.com/JesunAhmadUshno/multimodal-lab/releases
   over 12 colour and shape combinations; train loss 3.124841
   to 0.005265 over 2,500 steps; held-out image-to-text Recall
   at 1 0.050 to 0.983333, text-to-image Recall at 1 0.0 to 1.0.
-- Level grade: 8,700 of 10,000.
 - Release: https://github.com/JesunAhmadUshno/multimodal-lab/releases/tag/v0.1
 
 ## v0.5, Build (2026-11-05)
@@ -32,7 +31,6 @@ https://github.com/JesunAhmadUshno/multimodal-lab/releases
 - Measured result: 48 synthetic QA cases, exact match 1.000
   and mean token F1 1.000 overall and per type, schema
   validation 48 of 48 passed.
-- Level grade: 8,200 of 10,000.
 - Release: https://github.com/JesunAhmadUshno/multimodal-lab/releases/tag/v0.5
 
 ## v1.0, Learn, Build, and Deep (2026-11-05)
@@ -41,13 +39,12 @@ https://github.com/JesunAhmadUshno/multimodal-lab/releases
   synthetic documents and the counting failure class in depth,
   plus 29 Deep checks (59 checks in total, plus the scaffold
   smoke test). The rest of the v2 Deep scope is named in
-  ROADMAP.md as the v1.1 backlog.
+  REPORT.md (v1.1 backlog) as the v1.1 backlog.
 - Measured result: 24 synthetic documents, 144 cases; vision
   exact match 0.354167 and F1 0.385417 against text exact match
   0.666667 and F1 0.750; vision colour 0.750 against text
   0.000; vision count 0.250 overall and 0.000 on multi-item
   documents, text count 1.000.
-- Level grade: 8,000 of 10,000.
 - Release: https://github.com/JesunAhmadUshno/multimodal-lab/releases/tag/v1.0
 
 ## Held channels
@@ -55,6 +52,6 @@ https://github.com/JesunAhmadUshno/multimodal-lab/releases
 - Social posts for every release above: HELD under the standing
   platform rules. The loop prepares drafts and never posts;
   Threads needs Jesun's one tap per post.
-- The v1.1 backlog lives in ROADMAP.md: a real VLM route, real
+- The v1.1 backlog lives in REPORT.md (v1.1 backlog): a real VLM route, real
   license-checked public data, a counting fix, small text,
   spatial depth, a learned text route, and scale.

@@ -118,7 +118,7 @@ returns exactly one caption for the whole image.
   before answering (detection, tiling with per-tile reads, or
   a VLM whose counting behaviour is itself evaluated per
   count value, since VLMs are known to be weak counters).
-  Any of these is new scope; it is named in ROADMAP.md as a
+  Any of these is new scope; it is named in REPORT.md (v1.1 backlog) as a
   v1.1 item, not claimed here.
 - Honest limit: this failure is a property of the stand-in
   service, proven by construction and confirmed by the
@@ -140,7 +140,7 @@ returns exactly one caption for the whole image.
   (left_shape: vision 0.375, text 1.000, because legend order
   carries position and the vision route predicts one overall
   shape). No deeper spatial claim is made. Small text was
-  not measured in this level; it is a ROADMAP.md v1.1 item.
+  not measured in this level; it is a REPORT.md (v1.1 backlog) v1.1 item.
 
 ## Determinism
 
@@ -152,14 +152,12 @@ The full test suite in this repo: smoke test, 8 Learn tests,
 22 Build tests, 29 Deep tests, all passing locally on
 2026-11-05.
 
-## Grade
+## Limits named at ship
 
-8,000 of 10,000. Deductions: no real VLM, the vision route is
-the labelled encoder stand-in (-900); synthetic documents
-only, no public or P16 document data (-400); the text route
-is a hand parser, not OCR or a learned pipeline (-300); small
-scale, 24 documents and one training seed (-200); small text
-not measured and spatial relations reported as a table cell
-only, not a second study (-200). Inside the compressed Deep
-band of 7,500 to 8,700 set by the December Compression
-Protocol.
+- No real VLM: the vision route is the labelled encoder stand-in.
+- Synthetic documents only, no public or P16 document data.
+- The text route is a hand parser, not OCR or a learned pipeline.
+- Small scale: 24 documents and one training seed (five seeds were
+  added later, analysis/run_seeds.py).
+- Small text not measured, and spatial relations reported as a table
+  cell only, not a second study.

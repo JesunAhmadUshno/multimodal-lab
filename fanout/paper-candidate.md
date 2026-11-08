@@ -94,7 +94,7 @@ READMEs and results files in the repo.
 
 ## What would strengthen the candidate
 
-Each item is v1.1 backlog in ROADMAP.md, not done work: a real
+Each item is v1.1 backlog in REPORT.md (v1.1 backlog), not done work: a real
 VLM route on the same questions, real license-checked public
 documents, a counting fix with per-count-value scoring, small
 text measurement, and several training seeds with spread.
