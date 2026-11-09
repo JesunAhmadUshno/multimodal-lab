@@ -14,12 +14,12 @@ scope. The VLM step is a labelled stand-in: the Learn CLIP-style
 encoder retrieves the nearest of the 12 canonical captions, and a
 deterministic composer answers from that prediction. The
 substitution is named in BUILD-SPEC.md, in the code, in
-results_build.json (vlm_used false), and as a grade deduction.
+results_build.json (vlm_used false), and as a named limitation.
 The evaluation set is synthetic (the Learn renderer, held-out
 seeds), labelled synthetic everywhere; the license-checked
 public captioned set named as the carry-over first step was not
 fetched, because per-image license verification cannot be done
-cheaply and honestly inside this cycle. That is a deduction too.
+cheaply and honestly inside this cycle. That is a named limitation too.
 
 Code: BUILD-SPEC.md (design first, hand-computed oracles, the
 named substitutions), qa_service.py (schema validator, stand-in
@@ -125,17 +125,15 @@ Counts computed by qa_service.py, not quoted from papers:
 ## Summary claim
 Build shipped a deterministic question-answering service over synthetic images on the Muse VM with no vision-language model downloaded or run: the Learn CLIP-style encoder, retrained with the Learn procedure (train loss 3.574392 to 0.005415 over 2,500 steps), serves as a labelled stand-in that retrieves the nearest of 12 captions, and on a synthetic evaluation set of 48 cases (12 colour and shape combinations times 4 question types, held-out seeds, labelled synthetic, no public data) the service scored exact match 1.000 and mean token F1 1.000 with 48 of 48 outputs passing the inline P14-style schema validation, with 22 hand-computed Build tests passing, and results_build.json byte-identical across two runs at sha256 0c580990f704cad6.
 
-## Grade
-Grade: P22 Build 8,200 of 10,000.
-Deductions: the VLM step is a labelled stand-in on the Learn
-encoder, no open VLM wired in as SPEC names (minus 700);
-evaluation set is synthetic only, the license-checked public
-captioned set was not fetched (minus 500); template questions
-only, 4 types, count constant by construction, one image per
-combination (minus 300); in-process Python API only, no HTTP
-service layer or framework port (minus 200); run on the Muse
-VM, not the assigned BlackBox (GPU) fleet node (minus 100).
-Zero-tolerance: PASS (no invented claim, no VLM claim, synthetic
-data labelled synthetic in every file, every number measured by
-the runner or hand-computed and test-asserted, em dash count 0
-in all touched files, scaffold never graded as a build).
+## Limits named at ship
+- The VLM step is a labelled stand-in on the Learn encoder; no open
+  VLM is wired in as SPEC names.
+- The evaluation set is synthetic only; the license-checked public
+  captioned set was not fetched.
+- Template questions only, 4 types, count constant by construction,
+  one image per combination.
+- In-process Python API only, no HTTP service layer or framework port.
+- Run on the Muse VM, not the assigned BlackBox (GPU) fleet node.
+- Honesty checks at ship: no invented claim, no VLM claim, synthetic
+  data labelled synthetic in every file, every number measured by the
+  runner or hand-computed and test-asserted.

@@ -2,10 +2,10 @@
 
 Synthetic data only: images come from the Learn renderer and are
 labelled synthetic everywhere. No vision-language model is used.
-The VLM step in SPEC.md is replaced by a labelled stand-in: the
+The VLM step in PROPOSAL.md (former SPEC.md) is replaced by a labelled stand-in: the
 Learn CLIP-style encoder retrieves the nearest of the 12 canonical
 captions, and a deterministic composer builds the answer. The
-substitution and its grade deduction are named in BUILD-SPEC.md
+substitution and its limits are named in BUILD-SPEC.md
 and the level README. No VLM run is claimed.
 
 Dependencies: NumPy only, plus the Learn module loaded by path.

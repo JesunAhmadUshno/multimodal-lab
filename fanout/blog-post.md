@@ -30,15 +30,14 @@ real VLM or to real images.
 Learn: a NumPy CLIP-style dual encoder with hand-written
 backpropagation, trained on a synthetic teaching set of 1,200
 train pairs and 120 held-out pairs over 12 colour and shape
-combinations. Grade 8,700 of 10,000.
+combinations.
 
 Build: a deterministic QA service on the Learn encoder stand-in
 (no VLM run), with P14-style schema validation on every output
-and P06-style scoring. Grade 8,200 of 10,000.
+and P06-style scoring.
 
 Deep: a vision against text-only eval study on synthetic
 documents, plus the counting failure class written up in depth.
-Grade 8,000 of 10,000.
 
 ## The main result
 
@@ -87,7 +86,7 @@ It is not a measured claim about any real VLM.
 
 ## Future
 
-The v1.1 backlog is ROADMAP.md in the repo: a real VLM route,
+The v1.1 backlog is REPORT.md (v1.1 backlog) in the repo: a real VLM route,
 real license-checked public data, a counting fix, small text,
 spatial depth, and a learned text route. None of that is
 claimed as done.

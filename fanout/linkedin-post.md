@@ -33,8 +33,7 @@ The counting failure is the finding I keep coming back to:
 the vision count is constant one, 0.25 overall and 0.0 on
 multi-item documents.
 
-Grades, house scale: Learn 8,700, Build 8,200, Deep 8,000 of
-10,000. 59 checks in total, plus the smoke test. The real VLM
+59 checks in total, plus the smoke test. The real VLM
 route is the first v1.1 item, and it is not claimed here.
 
 When did a text layer beat your vision pipeline?

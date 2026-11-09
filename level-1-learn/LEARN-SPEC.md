@@ -12,7 +12,7 @@ set was license-verified inside this cycle. Learn therefore trains
 on a synthetic teaching set built programmatically in code and
 labelled synthetic in every file. A license-checked public captioned
 image set is the named first step of Build. This substitution is a
-grade deduction, not a silent change.
+named limitation, not a silent change.
 
 ## The synthetic teaching set (synthetic, not public, not real)
 - Images: 16 by 16 by 3 NumPy arrays. One coloured shape on a dark

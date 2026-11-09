@@ -6,8 +6,7 @@ import seeds from '../../analysis/results_seeds.json';
 import stats from '../../analysis/results_stats.json';
 import countBase from '../../analysis/results_count_baseline.json';
 import anatomyMd from '../../level-1-learn/ANATOMY.md?raw';
-import roadmapMd from '../../ROADMAP.md?raw';
-import summaryMd from '../../docs/index.md?raw';
+import reportMd from '../../REPORT.md?raw';
 import qaSource from '../../level-2-build/qa_service.py?raw';
 import * as L from './lab.js';
 
@@ -20,12 +19,11 @@ const fmtP = (p) => (p < 1e-4 ? p.toExponential(1) : p.toFixed(4));
 const SECTIONS = [['top', 'Overview', '◎'], ['learn', 'Trainer', '∇'], ['sketch', 'Sketchpad', '▦'], ['build', 'Build', '⌘'], ['study', 'Study', '▥'], ['counting', 'Counting', '#'], ['stats', 'Uncertainty', '±'], ['seeds', 'Seeds', '⟳'], ['anatomy', 'Anatomy', '◫'], ['limits', 'Limits', '!']];
 
 // Text pulled from the repo's own documents at build time.
-const grades = Object.fromEntries([...summaryMd.match(/Grades on record \(of 10,000\): (.*)\./)[1].matchAll(/(\w+) (\d{1,2},\d{3})/g)].map((m) => [m[1], m[2]]));
 const anatomy = anatomyMd.split('\n## Part ').slice(1).map((block) => {
   const field = (name) => (block.match(new RegExp(`- ${name}: ([\\s\\S]*?)(?=\\n- |\\n\\n|$)`)) || [])[1]?.replace(/\s+/g, ' ');
   return { title: block.split('\n')[0], job: field('Job'), llava: field('In LLaVA'), fail: field('Failure tendency') };
 });
-const backlog = [...roadmapMd.split('## v1.1 backlog')[1].matchAll(/\n(\d)\. ([\s\S]*?)(?=\n\d\. |\n\n)/g)].map((m) => ({ n: m[1], text: m[2].replace(/\s+/g, ' ') }));
+const backlog = [...reportMd.split('## v1.1 backlog')[1].split('\n## ')[0].matchAll(/\n(\d)\. ([\s\S]*?)(?=\n\d\. |\n\n)/g)].map((m) => ({ n: m[1], text: m[2].replace(/\s+/g, ' ') }));
 const countBranch = qaSource.split('\n').filter((l) => /qtype == "count"|answer, out_colour, out_shape, count = "one"/.test(l)).map((l) => l.trim()).join('\n');
 
 function useReveal() {
@@ -48,7 +46,7 @@ function MenuBar() {
       <a className="m" href={blob('level-1-learn/README.md')}>Learn</a>
       <a className="m" href={blob('level-2-build/README.md')}>Build</a>
       <a className="m" href={blob('level-3-deep/README.md')}>Deep</a>
-      <a className="m" href={blob('docs/research-review.md')}>Review</a>
+      <a className="m" href={blob('REPORT.md')}>Report</a>
       <span className="spacer" />
       <span className="status"><i /> CPU · NumPy · synthetic</span>
       <a href={REPO}>GitHub ↗</a>
@@ -642,12 +640,11 @@ function Anatomy() {
           </div>
         ))}
       </div>
-      <div className="card window inner" data-title="ROADMAP.md - v1.1" id="roadmap">
+      <div className="card window inner" data-title="REPORT.md - v1.1 backlog" id="roadmap">
         <p className="eyebrow">Not built, not measured</p>
         <ol className="steps">
           {backlog.slice(0, 4).map((b) => <li key={b.n}><span className="n">{b.n}</span><div className="hint">{b.text}</div></li>)}
         </ol>
-        <p className="hint" style={{ marginTop: 12 }}>Grades on record, self-assessed with no external review: Learn {grades.Learn}, Build {grades.Build}, Deep {grades.Deep} (of 10,000).</p>
       </div>
     </section>
   );
@@ -670,7 +667,7 @@ function Limits() {
       <div className="grid2" style={{ marginTop: 16 }}>
         {items.map(([t, d]) => <div className="tile" key={t}><div className="head" style={{ marginBottom: 6 }}><h3>{t}</h3><span className="pill warn">Caveat</span></div><p className="hint" style={{ margin: 0, fontSize: 13 }}>{d}</p></div>)}
       </div>
-      <p className="hint" style={{ marginTop: 16 }}>Full grading against a research rubric, with what each remaining gap needs: <a href={blob('docs/research-review.md')}>docs/research-review.md</a>.</p>
+      <p className="hint" style={{ marginTop: 16 }}>Results, misses, threats and what each remaining gap needs: <a href={blob('REPORT.md')}>REPORT.md</a>. Verdict: Functional, not pre-registered.</p>
     </section>
   );
 }

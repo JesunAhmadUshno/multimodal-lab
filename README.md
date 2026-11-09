@@ -1,67 +1,78 @@
 # multimodal-lab
 
-Vision-language systems: a small CLIP, an open VLM in a question-answering service, a VLM eval study.
+**Question.** On synthetic documents, where does a vision route pay
+against a text-only parser, and why does the vision route fail at
+counting? (The scaffold asked this of a real vision-language model;
+none was ever run, so the vision route here is a stand-in.)
 
-Status: Learn DONE 2026-11-05, Build DONE 2026-11-05, Deep DONE 2026-11-05 (ROADMAP-V3-BATCH). v1.0 shipped 2026-11-05; the rest of the v2 Deep scope is the v1.1 backlog in ROADMAP.md.
-Project: P22. Fleet node: BlackBox (GPU). Wave: Wave 8.
+**Headline.** On 144 synthetic document questions, a stand-in vision route (a NumPy CLIP-style encoder plus a keyword composer; no real VLM ran) scored exact match 0.354 (document-bootstrap 95% CI 0.229 to 0.486) against 0.667 for a text-only parser; it won only on colour (0.750 against 0.000) and scored 0.000 on counting multi-item documents, while a non-learned region count on the same pixels scored 0.750.
 
-Live dashboard: https://jesunahmadushno.github.io/multimodal-lab/ (retrain the encoder in your browser, replay the recorded Build and Deep cases, and see the paired statistics; source in site/).
+**Field.** ML and AI research. **Job family.** Applied AI and
+multimodal engineering (vision-language systems and their evaluation).
 
-## Start here
+**Verdict.** Functional, not pre-registered. Tests pass in CI on Python
+3.11 and 3.12, every results file regenerates byte for byte from the
+code and seeds in CI, and the system under study (encoder, QA service,
+text parser, eval study) has run end to end with its outputs committed.
+The system that ran is a stand-in: no VLM was downloaded or run, and
+all data is synthetic. No plan was locked before the results
+(PROPOSAL.md, docs/decisions/0003), so the verdict is capped at
+Functional until a locked confirmatory cycle runs. The old tags v0.1,
+v0.5 and v1.0 come from the earlier Learn, Build, Deep ladder and do
+not mean "v1.0 Released" under the current standard.
 
-1. Read SPEC.md for scope and acceptance criteria.
-2. Read DOSSIER.md for the past, present, and future of this problem (v1).
-3. Read NOVELTY.md for the proposed novelty (DRAFT, pending the Jev claim_check gate).
-4. Start at level-1-learn/README.md, then level-2-build, then level-3-deep.
+Live dashboard: https://jesunahmadushno.github.io/multimodal-lab/
+(retrain the encoder in your browser, replay the recorded Build and
+Deep cases, and see the paired statistics; built from site/ by
+.github/workflows/pages.yml).
 
-## Level map
+## Reproduce
 
-- Level 1, Learn: DONE 2026-11-05. A NumPy CLIP-style dual encoder trained end to end on a synthetic teaching set (labelled synthetic; the SPEC public-data step moves to Build with a license-checked set), plus the LLaVA anatomy page as a document inspection.
-- Level 2, Build: DONE 2026-11-05. A deterministic QA service over synthetic images on the Learn encoder as a labelled VLM stand-in (no VLM run), P14-style schema validation on every output, P06-style scoring, and the multimodal tokenization note with counts.
-- Level 3, Deep: DONE 2026-11-05. An eval study on synthetic documents: the Build QA service (labelled encoder stand-in, no VLM run) against a text-only parser on the same 144 document questions, one comparison table (vision pays on colour and both, text pays on shape, count, title, and left_shape), and the counting failure class written up in depth (vision count is constant one: 0.250 overall, 0.000 on multi-item documents).
+```text
+pip install -r requirements.txt
+for t in tests/test_*.py; do python "$t" || exit 1; done
+python level-1-learn/run_learn.py && python level-2-build/run_build.py && python level-3-deep/run_deep.py
+python analysis/run_seeds.py && python analysis/paired_stats.py && python analysis/count_baseline.py
+git diff --exit-code -- level-1-learn/results_learn.json level-2-build/results_build.json level-3-deep/results_deep.json analysis/
+```
 
-## Benchmarks
+NumPy only (pinned per Python version), CPU, under a minute in total.
+The tests run as scripts, as CI does. Lines three and four rewrite
+every results file; the last line proves nothing moved. REPORT.md
+traces every headline number to its file and field.
 
-Method: synthetic teaching set, 1,200 train pairs and 120 held-out pairs over 12 colour and shape combinations, combination-match recall on held-out pairs, before and after training, Muse VM CPU, NumPy. Full record in level-1-learn/README.md and level-1-learn/results_learn.json.
+## Lifecycle
 
-| Test | Result |
+- Question: DONE 2026-11-04
+- Proposal: NOT PRE-REGISTERED 2026-11-08
+- Baseline: DONE 2026-11-05
+- Build: DONE 2026-11-05
+- Evaluate: OPEN
+- Report: DONE 2026-11-08
+- Review: OPEN
+- Release: OPEN
+
+## Layout
+
+| Path | What it holds |
 | --- | --- |
-| Learn train loss, first step to last step | 3.124841 to 0.005265 |
-| Learn image-to-text Recall at 1, before to after | 0.050000 to 0.983333 |
-| Learn text-to-image Recall at 1, before to after | 0.000000 to 1.000000 |
-| Build exact match, 48 synthetic QA cases | 1.000 |
-| Build mean token F1, 48 synthetic QA cases | 1.000 |
-| Build schema validation | 48 of 48 passed |
-| Deep vision exact match, 144 synthetic document cases | 0.354167 |
-| Deep text-only exact match, same 144 cases | 0.666667 |
-| Deep vision colour exact match (text 0.000) | 0.750 |
-| Deep vision count exact match (text 1.000) | 0.250 |
+| PROPOSAL.md | Question, post hoc questions, a draft plan for a locked confirmatory cycle (not locked; holds the former SPEC.md, NOVELTY.md and DOSSIER.md) |
+| REPORT.md | Background, method, results traced to files, questions scored with misses, threats, verdict, gaps (holds the former ROADMAP.md, docs/research-review.md, docs/index.md and the v1.0 benchmark table) |
+| level-1-learn/ | Code: the NumPy CLIP-style encoder (clip_numpy.py), its runner and results_learn.json; LEARN-SPEC.md; ANATOMY.md (LLaVA, a document inspection) |
+| level-2-build/ | Code: the QA service on the encoder stand-in (qa_service.py), its runner and results_build.json; BUILD-SPEC.md |
+| level-3-deep/ | Code: the document set, text-only parser and eval study (deep_eval.py), its runner and results_deep.json; DEEP-SPEC.md |
+| analysis/ | Seeds, paired statistics and the enumeration baseline, with their results_*.json |
+| tests/ | Unit tests with hand-computed oracles, and the layout check, run in CI |
+| site/ | The live dashboard, built from the results files and REPORT.md |
+| docs/decisions/ | Records of hard-to-reverse choices |
+| fanout/, PUBLICITY.md | Dated 2026-11-05 publicity drafts and the channel log (nothing posted) |
+| CHANGELOG.md, CITATION.cff, SECURITY.md, LICENSE | Change history, citation, security policy, licence |
 
-## Post-v1.0 analysis
-
-Added after v1.0, in analysis/ (CPU, NumPy, under a minute, tests in tests/test_analysis.py). Full grading in docs/research-review.md.
-
-Tests run as scripts (`for t in tests/test_*.py; do python3 $t; done`, as CI does); `pytest` alone collects only the functions named `test_*`.
-
-- Seed sensitivity (analysis/results_seeds.json): over five encoder seeds (42, 1, 2, 3, 4), Learn image-to-text Recall at 1 is 0.990 mean (sd 0.011, range 0.975 to 1.000), text-to-image 1.000 at every seed, and Deep vision exact match 0.371 mean (sd 0.017, range 0.354 to 0.396). Seed 42 reproduces the recorded runs.
-- Learn confusion at seed 42: the two held-out misses are one red circle read as red square and one green square read as green circle. Image-to-text Recall at 5 equals Recall at 1 by construction, because the held-out captions repeat.
-- Paired statistics (analysis/results_stats.json): the exact McNemar test finds every per-type route difference significant on this synthetic set (largest p 0.0039, both). Overall vision exact match 0.354 has a document-bootstrap 95% CI of 0.229 to 0.486. Count exact match by gold item count is 1.000 for one item and 0.000 for two, three and four.
-- Enumeration baseline (analysis/results_count_baseline.json): counting 4-connected non-background regions in each figure, with no learning, scores 0.750 exact match on the 24 count questions (1.000 for one, two and four items, 0.000 for three). The pixels carry most counts, so the constant-one composer is the main cause of the failure class; the three-item slots draw adjacent shapes touching, which merges them, a second, data-side flaw in the v1.0 document set.
-
-## Fan-out
-
-Written fan-out set for v1.0, in fanout/: blog post, tutorial,
-website page copy, LinkedIn post draft (DRAFT NOT POSTED, link in
-the first comment), paper candidate, and release notes for
-v0.1, v0.5, and v1.0. Every piece states the honest scope: no
-VLM downloaded or run, the Learn encoder as a labelled stand-in,
-synthetic only, no public data claimed. Grades and channel
-outcomes are logged in PUBLICITY.md. Overall fan-out grade:
-9,457 of 10,000.
-
-## Novelty
-
-PROPOSED. See NOVELTY.md. The novelty text is a draft until the Jev claim_check gate passes on it.
+Evidence and results live next to the code that writes them, in each
+level folder and in analysis/, instead of separate experiments/ and
+results/ folders: every runner writes one JSON beside itself, and the
+dashboard and tests read them at those paths (docs/decisions/0002).
+There is no src/ for the same reason.
 
 ## License
 

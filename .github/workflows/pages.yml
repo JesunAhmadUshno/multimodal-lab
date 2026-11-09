@@ -1,11 +1,11 @@
 name: Pages
 
 # Builds the live dashboard in site/ from the committed results files and publishes it to GitHub Pages.
-# Pages must use the GitHub Actions source (build_type workflow); the old docs/index.md page is no longer served.
+# Pages must use the GitHub Actions source (build_type workflow); the old docs/index.md page is folded into REPORT.md.
 on:
   push:
     branches: [main]
-    paths: ['site/**', 'level-*/results_*.json', 'analysis/results_*.json', 'ROADMAP.md', 'README.md', 'docs/index.md', 'level-1-learn/ANATOMY.md', 'level-2-build/qa_service.py', '.github/workflows/pages.yml']
+    paths: ['site/**', 'level-*/results_*.json', 'analysis/results_*.json', 'REPORT.md', 'level-1-learn/ANATOMY.md', 'level-2-build/qa_service.py', '.github/workflows/pages.yml']
   workflow_dispatch:
 
 permissions:

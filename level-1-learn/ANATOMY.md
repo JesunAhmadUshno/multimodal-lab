@@ -93,7 +93,7 @@ the language model never sees a pixel.
   space, contrastive alignment. A VLM replaces the text tower with
   a full language model and the contrastive objective with
   next-token prediction, but the visual bottleneck stays.
-- Build (SPEC.md) wires one open VLM into a question-answering
+- Build (PROPOSAL.md (former SPEC.md)) wires one open VLM into a question-answering
   service. The parts to instrument are exactly the joints above:
   encoder resolution, projector behaviour, and visual token count,
   because the failure classes named for Deep (counting, small text,

@@ -97,7 +97,7 @@ not measured here (this set has one shape per image and no text in
 any image): counting, small text reading, and spatial relations
 are the classes the LLaVA inspection in ANATOMY.md traces to the
 vision encoder and projector joints. They are Deep level scope in
-SPEC.md, to be measured there, not claimed here.
+PROPOSAL.md (former SPEC.md), to be measured there, not claimed here.
 
 ## The VLM anatomy page
 ANATOMY.md walks LLaVA part by part: the CLIP vision encoder, the
@@ -111,17 +111,15 @@ contains no measurement about LLaVA.
 ## Summary claim
 Learn trained a NumPy CLIP-style dual encoder once, end to end, on the Muse VM on a synthetic teaching set of 1,200 train pairs and 120 held-out pairs over 12 colour and shape combinations with a vocabulary of 9: train loss fell from 3.124841 to 0.005265 over 2,500 steps, held-out image-to-text Recall at 1 rose from 0.050000 to 0.983333 and text-to-image Recall at 1 rose from 0.000000 to 1.000000, with 8 hand-computed Learn tests passing plus the scaffold smoke test, results_learn.json byte-identical across two runs at sha256 dee704a6b07abdee4a7e77d22cfee76cbb6038c18eae4e2941e7d30000bc503d, and the LLaVA anatomy page written as a document inspection with no VLM downloaded or run.
 
-## Grade
-Grade: P22 Learn 8,700 of 10,000.
-Deductions: synthetic teaching set instead of the SPEC public data,
-no license-verified public captioned image set used (minus 500);
-tiny teaching scale only, 16 by 16 images, 12 combinations, one
-shape per image, vocabulary of 9 (minus 300); VLM anatomy is a
-document inspection, no VLM downloaded or run (minus 200);
-NumPy only, no framework port, one seed and one training
-configuration (minus 200); run on the Muse VM CPU, not the
-assigned BlackBox (GPU) fleet node (minus 100).
-Zero-tolerance: PASS (no invented claim, every number measured by
-the runner or hand-computed and test-asserted, synthetic data
-labelled synthetic in every file, em dash count 0 in all touched
-files, scaffold never graded as a build).
+## Limits named at ship
+- Synthetic teaching set instead of the SPEC public data; no
+  license-verified public captioned image set used.
+- Tiny teaching scale only: 16 by 16 images, 12 combinations, one
+  shape per image, vocabulary of 9.
+- VLM anatomy is a document inspection; no VLM downloaded or run.
+- NumPy only, no framework port, one seed and one training
+  configuration (five seeds were added later, analysis/run_seeds.py).
+- Run on the Muse VM CPU, not the assigned BlackBox (GPU) fleet node.
+- Honesty checks at ship: no invented claim, every number measured by
+  the runner or hand-computed and test-asserted, synthetic data
+  labelled synthetic in every file.

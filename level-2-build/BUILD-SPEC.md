@@ -17,8 +17,8 @@ for the VLM step: image embedding retrieval over the 12 caption
 embeddings predicts the colour and shape combination, and a
 deterministic answer composer turns that prediction into the
 answer text. No VLM was downloaded or run, and no VLM measurement
-is claimed anywhere in this level. The substitution is a grade
-deduction (minus 700), not a silent change. Swapping in a real
+is claimed anywhere in this level. The substitution is a named
+limitation, not a silent change. Swapping in a real
 VLM later needs only a new prediction step behind the same schema
 and scoring code.
 
@@ -29,7 +29,7 @@ per-image license verification cannot be done cheaply and
 honestly inside this cycle, and an unverified download would
 break the house rule. The evaluation set is therefore synthetic,
 derived from the Learn renderer with held-out seeds, and labelled
-synthetic in every file. This is a grade deduction (minus 500).
+synthetic in every file. This is a named limitation.
 
 ## Service design (stdlib plus NumPy only)
 - qa_service.py imports the Learn encoder (clip_numpy) by path.

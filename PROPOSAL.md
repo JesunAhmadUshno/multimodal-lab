@@ -1,12 +1,76 @@
-# SPEC: multimodal-lab (P22)
+# PROPOSAL: multimodal-lab (P22)
+
+Status: NOT PRE-REGISTERED. This file was assembled on 2026-11-08 from
+the Wave 0 scaffold (SPEC.md, NOVELTY.md, DOSSIER.md, first committed
+2026-11-04 in 46a76da). That scaffold set scope and acceptance criteria
+before any code, but it held no hypotheses and no pass lines, and every
+result came before this file. It is therefore not a locked plan and
+carries no proposal-v1 tag (docs/decisions/0003). The confirmatory
+cycle below is a draft; it becomes a proposal only when it is locked
+by a tag before its first run.
+
+## Question
+
+The scaffold question (SPEC.md, Deep): where does an open
+vision-language model pay against a text-only pipeline on the same
+document questions, and which failure class (counting, small text,
+spatial relations) explains where it does not?
+
+What the repo actually answered, because no VLM was ever downloaded
+or run (docs/decisions/0001): on synthetic documents, where does a
+stand-in vision route (a NumPy CLIP-style encoder plus a keyword
+composer) pay against a text-only parser, and why does it fail at
+counting?
+
+## Questions the exploratory work answered (post hoc, not locked)
+
+These were written after the results. REPORT.md scores each one and
+shows the misses; none of them counts as a confirmed hypothesis.
+
+- Q1. Can a NumPy CLIP-style dual encoder, trained once end to end,
+  learn colour and shape on a synthetic teaching set (held-out Recall
+  at 1 well above the 1-in-12 chance level)?
+- Q2. Does a schema-validated QA service wrapped around that encoder
+  answer its own template questions and pass the schema on every
+  output?
+- Q3. On the same synthetic document questions, does the vision route
+  beat the text-only parser overall, and on which question types?
+- Q4. Is the counting failure a property of the pixels or of the
+  composer (does a non-learned region count on the same pixels do
+  better)?
+- Q5. Are the recorded numbers stable across encoder seeds?
+
+## Draft plan for a locked confirmatory cycle (not yet locked)
+
+Needs the Owner's approval for GPU time and a data licence review, so
+nothing here is scheduled.
+
+- Vision route: one open VLM in the LLaVA-1.5 7B class, run on the
+  same 144 cases with the same scoring code, on one GPU with about
+  16 GB of memory.
+- Data: the v1.0 synthetic set with the three-item slot layout fixed
+  so shapes do not touch, plus a licence-checked public document-VQA
+  set reported separately.
+- Hypotheses with frozen pass lines, written and tagged before the
+  first run. Candidates: H1, the VLM beats the text-only parser on
+  colour and both by at least 0.25 exact match, with the
+  document-bootstrap 95% interval of the difference above zero; H2,
+  the VLM's count exact match on multi-item documents is at least
+  0.50; H3, overall, the text-only parser still wins on the synthetic
+  set, because its text layer answers 4 of 6 types by design.
+- Analysis: the same cluster bootstrap (24 documents, 10,000
+  resamples) and exact McNemar test as analysis/paired_stats.py, five
+  seeds where the route is stochastic, every trial reported.
+
+## Former SPEC.md (Wave 0 scaffold, 2026-11-04; internal scores removed)
 
 Phase skill: spec-driven-development (house engineering pipeline).
 Status: Wave 0 scaffold spec, from Roadmap v2 text and the v3 decision pack. Scope and acceptance criteria below are the v2 section text, kept as the source of truth until the project's wave opens its own spec pass.
 
 Fleet node: BlackBox (GPU). Wave: Wave 8.
-Hiring evidence: 3 of 5 (1 posting read in full, trend years 2027 to 2028) [confirmed, fleet and scoring pass 2026-11-04, or the decision pack for P23 to P29].
+Hiring evidence: 1 posting read in full, trend years 2027 to 2028 (the internal demand score is kept outside the public repo) [confirmed, fleet and scoring pass 2026-11-04, or the decision pack for P23 to P29].
 
-## Project section text (Roadmap v2, or the v3 candidate text for P23 to P29)
+#### Project section text (Roadmap v2, or the v3 candidate text for P23 to P29)
 
 multimodal-lab: NEW
 
@@ -18,7 +82,7 @@ Fan-out: Book chapter "Teaching Machines To See". Paper angle: a small VLM eval 
 
 ---
 
-# 6. The mapping table: every project against the evidence
+### 6. The mapping table: every project against the evidence
 
 Job evidence counts come from the career documentation, Section B (of 56 in-lane postings) and Section D (build ranks) [confirmed]. Register categories use the register's own numbers and names [confirmed]. CEO atoms use the cross-match codes; a scale atom is marked (scale) [confirmed, cross-match Parts 2 to 5]. Trend years name the years the project answers most (Section 7).
 
@@ -51,11 +115,11 @@ Read of the table: the next-15 CEO atoms map onto nine projects (P01, P02, P03, 
 
 ---
 
-# 7. Trends 2026, 2027, 2028: what the field asks each year, and which repos answer
+### 7. Trends 2026, 2027, 2028: what the field asks each year, and which repos answer
 
 Ground rule for this section: the 57 postings are the demand signal first [confirmed]. Forward claims come second, each with its source and its tag. Vendor and bank forecasts are [unverified] by rule: no primary report was opened in this run.
 
-## 2026: agents land, thinking costs money, evaluation becomes law-shaped
+#### 2026: agents land, thinking costs money, evaluation becomes law-shaped
 
 - The postings already price 2026: frameworks in 27 of 56, distributed systems in 31, evaluation in 22, agents in 12 [confirmed, Section B].
 - Gartner's prediction, as reported: 40 percent of enterprise applications will carry task-specific AI agents by the end of 2026, up from under 5 percent in 2025 [unverified]. Source: https://www.aiplusinfo.com/blog/agentic-ai-adoption-statistics-2026/
@@ -63,7 +127,7 @@ Ground rule for this section: the 57 postings are the demand signal first [confi
 - EU general-purpose AI duties carry fining powers from 2 August 2026, and regulators in the EU, US, and UK converge on mandatory evaluation and adversarial testing as the governance tool [confirmed dates; the convergence read is one analysis]. Sources: https://regulome.io/regulations/eu-ai-act and https://autonainews.com/eu-ai-acts-gpai-model-evaluation-rules-draw-industry-pushback/
 - Repos that answer 2026: P06 (evaluation), P01 (PyTorch), P07 (agents), P03 (reasoning serving), P13 (safety and artefacts), P10 (post-training), P05 (retrieval).
 
-## 2027: the agent shakeout, governance deadlines, the infra peak
+#### 2027: the agent shakeout, governance deadlines, the infra peak
 
 - Gartner's warning, as reported: over 40 percent of agentic AI projects will be canceled by the end of 2027, on cost, unclear value, and weak risk controls [unverified]. Source: https://www.aiplusinfo.com/blog/agentic-ai-adoption-statistics-2026/ The skill that survives a shakeout is evaluation and cost proof, which is P06 and P12 territory.
 - Multi-agent work goes mainstream in the same forecast family: one third of agentic implementations combine agents with different skills by 2027 [unverified]. Source: https://www.leadgen-economy.com/blog/agentic-enterprise-ai-agents-operations/ P08 is the repo that answers it.
@@ -71,7 +135,7 @@ Ground rule for this section: the 57 postings are the demand signal first [confi
 - Infrastructure spend peaks in this window on bank forecasts: about 1.2 trillion dollars across five big firms in 2027, with growth slowing after [unverified]. Source: https://www.n884.com/html/infrastructure/478.html Platform skill (P20, P19) is hired while the buildout runs, not after it.
 - Physical AI commercial work accelerates from 2027 as actuation and edge costs fall (GlobalData read) [unverified]. Source: https://it-online.co.za/2026/09/21/physical-ai-will-redefine-the-future-of-robotics/ P22's vision-language base is the entry ticket he can hold by then.
 
-## 2028: the software turn, embedded rules, embodied systems
+#### 2028: the software turn, embedded rules, embodied systems
 
 - Morgan Stanley's read, as reported: hyperscaler capex growth falls to about 14 percent in 2028 and the cycle shifts from hardware toward software and applications [unverified]. Source: https://www.thehindubusinessline.com/info-tech/ai-spending-growth-seen-slowing-sharply-by-2028-marking-shift-towards-software-morgan-stanley/article71518970.ece The 2028 premium sits on shipped applications with users, which is C17 weight: P16, P15, and the product side of P05.
 - EU high-risk rules for AI embedded in regulated products land 2 August 2028 [confirmed]. Source: https://regulome.io/regulations/eu-ai-act P13 and P17 (an edge-deployed model with artefacts) answer it.
@@ -81,7 +145,7 @@ Ground rule for this section: the 57 postings are the demand signal first [confi
 
 ---
 
-# 8. Existing-repo map: what he already owns that seeds the build
+### 8. Existing-repo map: what he already owns that seeds the build
 
 Source: github-portfolio-refinement-plan.md, live inventory of 61 repos pulled 2026-10-18 [confirmed]. Only three true seeds exist. This section names them, then names the rest of the rescale stock honestly as proof shelf, not seed.
 
@@ -99,7 +163,7 @@ Every other project (P01 to P05, P07, P09 to P16, P19 to P22) starts as a new re
 
 ---
 
-# 9. Revised build order and the fit math
+### 9. Revised build order and the fit math
 
 The frame stands [confirmed, the-whole-board-plan.md]: program window 19 October 2026 to 18 October 2028, about 104 weeks; one project per about 6 weeks; about 17 slots inside the window; gap closure at 41.7 items per month.
 
@@ -146,11 +210,11 @@ Two sub-steps ride free inside other slots, by the register's own design [confir
 
 ---
 
-# 10. Self-audit
+### 10. Self-audit
 
 Method: this file was written, then reopened and checked by script and by read, per the standing delivery rule (audit first, fix, then deliver). Checks ran on the file as it stood before this section was appended; this section adds no project content.
 
-## Every v1 project accounted for
+#### Every v1 project accounted for
 
 | v1 number | v2 number | Name | Ruling |
 | --- | --- | --- | --- |
@@ -179,7 +243,7 @@ Method: this file was written, then reopened and checked by script and by read, 
 
 Count check: 18 v1 projects ruled (8 EXPAND, 10 KEEP, 0 MERGE, 0 DROP), plus P19, plus 3 NEW, equals 22 [arithmetic].
 
-## Checks run, with results
+#### Checks run, with results
 
 1. Numbering: project headings run P01 to P22 with no gap and no repeat (script count: 22 headings) [confirmed, scan this run].
 2. Shape: every NEW project (P20, P21, P22) and P19 carries full Learn, Build, Deep text in this file. Every EXPAND project names its added track in Learn, Build, Deep form. Every KEEP project states that the v1 level text carries over [confirmed, read this run].
@@ -197,20 +261,72 @@ What this audit did not do: it did not re-read the 57 postings (the career docum
 
 ---
 
-# Update (2026-10-19, evening): P19 hardware state, Spark boundary, live repo count, Jesun_Dev twin
+### Update (2026-10-19, evening): P19 hardware state, Spark boundary, live repo count, Jesun_Dev twin
 
 Appended under the knowledge base update order of 2026-10-19. The body above stands as written on its build date; this note carries the facts that moved after it. No register count and no score in this file changes here; those move only through the program loop's gated cycles.
 
 - P19 hardware, learning side [confirmed, live check 2026-10-19]: the BlackBox stack is installed and CUDA-proven. Python 3.14.7 with torch 2.11.0+cu128 on the NVIDIA GeForce RTX 5050 Laptop GPU (the cu128 pin fits driver 577.05); a 2048x2048 CUDA matmul ran clean. Record: ~/workspace/blackbox/p19-stack/status-2026-10-19.md. P19 Learn and Build steps now run on BlackBox. The publishable proof stays one rented cloud 2 GPU run under the CAD 50 gate, on Jesun's explicit call only (board plan FREE-ONLY tightening, 2026-10-19).
 - Spark boundary [confirmed, 2026-10-19]: both Gallea DGX Sparks (spark-6aa3 and spark-31c4) are reachable from the Muse VM and inventoried (~/workspace/spark-gateway/). They are org machines under Jesun's R&D testing approval. No roadmap project routes personal work or a personal proof to a Spark. The P19 route stays BlackBox plus rented cloud, exactly as the Section 3 ruling sets it.
-- Live repo count [confirmed, GitHub, 2026-10-19]: 44 public repos in total (37 authored, 7 forks); 54 owned in total with the 10 private. The 61-repo figures quoted in this file are the refinement plan's 2026-10-18 snapshot and stay as build history; 44 is the live count. The graded statement stands at 418 of 1000 on that count (the-statement-expanded-and-graded.md, Cycle 39 restatement, Pack 2026-10-19-06).
+- Live repo count [confirmed, GitHub, 2026-10-19]: 44 public repos in total (37 authored, 7 forks); 54 owned in total with the 10 private. The 61-repo figures quoted in this file are the refinement plan's 2026-10-18 snapshot and stay as build history; 44 is the live count. (The statement score on that count is kept outside the public repo.)
 - Jesun_Dev twin [confirmed, 2026-10-19]: Section 8 names Jesun_Dev on the proof shelf. Its "AI Twin (Gemini 2.5)" claim was false as shipped (the shipped twin.js is a rule-based matcher). The fix package is built and mock-tested 18 of 18: a Cloudflare Worker proxy holds the key, and the site falls back to the matcher on any error. Deploy waits on a Gemini key from Jesun's Google AI Studio (his sign-in). The Batch 2 description, topics, and README for Jesun_Dev stay held until the live twin verifies. Package: the career goal's hidden_files/twin-build/.
 
-Changelog: 2026-10-19, this update appended (P19 BlackBox stack state and proof route, Spark org-only boundary, live repo count 44 and statement 418 pointer, Jesun_Dev twin status). No body text changed.
+Changelog: 2026-10-19, this update appended (P19 BlackBox stack state and proof route, Spark org-only boundary, live repo count 44 and statement score pointer, Jesun_Dev twin status). No body text changed.
 
-## Acceptance criteria (scaffold level)
+#### Acceptance criteria (scaffold level)
 
 - Learn closes when the level-1-learn code runs, its README teaches the idea, and a fresh-eyes reader can follow it.
 - Build closes when the system runs end to end, tests pass, and one benchmark or result table with method is in the README.
 - Deep closes when the Deep scope in the section text is done, the failure modes are written, and the dossier is updated to ship state.
 - No level closes on a claim. Evidence only: code, tests, numbers, links.
+
+## Former NOVELTY.md (2026-11-04)
+
+Status: DRAFT, PROPOSED. Not verified. This text does not move into any public post, paper, or profile until the Jev claim_check gate passes on the exact text.
+
+### Proposed claim
+
+Against CLIP and VLM reference repos: this project aims to differ in the way its SPEC.md section text defines (a from-zero or self-hosted build, measured in public, on a named home fleet, with the failure modes written down). The exact difference is stated at the project's wave, after the prior art is re-read.
+
+### Prior art table
+
+| Prior art | What it does | What this project does differently | Measured difference |
+| --- | --- | --- | --- |
+| CLIP and VLM reference repos | See DOSSIER.md, Past | PROPOSED, see the claim above | NO MEASUREMENT YET |
+
+### Honest size
+
+If the novelty proves small, this file will say so and name the real value instead (a cleaner reproduction, a better benchmark, a first public dataset). No novelty is invented to fill this section.
+
+## Former DOSSIER.md (v1 2026-11-04, ship notes 2026-11-05, references 2026-11-07; internal scores removed)
+
+Written under the documentation and publishing standard (past, present, future). Updated at ship time.
+
+### Past
+
+Prior art for this project is named in NOVELTY.md (CLIP and VLM reference repos). The history of the problem, the key papers and systems, and what was tried before are recorded in the Roadmap v2 section text in SPEC.md and will be expanded with dated sources at the project's wave, before Build opens.
+
+### Present
+
+Current demand evidence: 1 posting read in full, trend years 2027 to 2028) [confirmed, fleet and scoring pass 2026-11-04; for P23 to P29, the decision pack 2026-11-04]. The Round 3 research (2026-11-04) found the market centre at post-training, evals, environments, and inference depth [confirmed as the research finding; the report is at ~/workspace/research_notes/roadmap-v3-revaluation-research-20261104-0949/report.md]. Tools and versions are pinned at Build time, not in this v1.
+
+### Build ship note (2026-11-05)
+Build closed: a deterministic QA service over synthetic images with the Learn encoder as a labelled stand-in for the SPEC VLM step (no VLM downloaded or run, named deduction), P14-style schema validation (48 of 48 passed), P06-style exact match and token F1 scoring (both 1.000 on the 48-case synthetic set, mechanism proof only), and the tokenization note with computed counts. Full record: level-2-build/README.md.
+
+### Deep ship note (2026-11-05)
+Deep closed (compressed Deep): an eval study on 24 synthetic documents (144 cases, labelled synthetic) comparing the Build QA service (learn_encoder_stand_in, no VLM downloaded or run, substitution named again) against a deterministic text-only parser on the same questions. Vision pays where the answer is only in the pixels (colour 0.750 against 0.000; both 0.375 against 0.000); text pays where the text layer carries the answer (shape, count, title, left_shape all 1.000 against vision 0.375, 0.250, 0.000, 0.375). Overall vision exact match 0.354167, text 0.666667. The counting failure class is written up in depth: the Build count branch is constant one by construction, scoring exactly the six single-item documents (0.250) and 0.000 on multi-item documents. The rest of the v2 Deep scope (real VLM route, real document data, counting fix, small text, spatial depth, learned text route, scale) is the v1.1 backlog in REPORT.md (v1.1 backlog). Full record: level-3-deep/README.md and level-3-deep/results_deep.json (sha256 4678206d4585330acf56402676212ecac4f0cb5c51b43dade563a0b7125955b2, byte-identical across runs).
+
+### Future
+
+Open problems and the project's next steps sit in the Deep level scope in SPEC.md. Any forecast about this field is [unverified] unless a dated primary source is added here at the wave update.
+
+### References (added 2026-11-07)
+
+Primary sources for the methods used in this repo. See REPORT.md, Appendix A for how each one is used.
+
+- CLIP, the dual-encoder design that Learn rebuilds: Radford, A. et al. (2021). Learning Transferable Visual Models From Natural Language Supervision. arXiv:2103.00020.
+- InfoNCE, the contrastive loss in clip_numpy.py: van den Oord, A., Li, Y. and Vinyals, O. (2018). Representation Learning with Contrastive Predictive Coding. arXiv:1807.03748.
+- LLaVA, the design inspected in level-1-learn/ANATOMY.md: Liu, H., Li, C., Wu, Q. and Lee, Y. J. (2023). Visual Instruction Tuning. arXiv:2304.08485.
+- LLaVA-1.5: Liu, H., Li, C., Li, Y. and Lee, Y. J. (2023). Improved Baselines with Visual Instruction Tuning. arXiv:2310.03744.
+- Adam, the optimiser in clip_numpy.py: Kingma, D. P. and Ba, J. (2014). Adam: A Method for Stochastic Optimization. arXiv:1412.6980.
+- McNemar's test, used in analysis/paired_stats.py: McNemar, Q. (1947). Psychometrika 12(2), 153-157.
+- The bootstrap, used in analysis/paired_stats.py: Efron, B. (1979). Bootstrap Methods: Another Look at the Jackknife. Annals of Statistics 7(1), 1-26.

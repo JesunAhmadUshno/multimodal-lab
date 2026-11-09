@@ -4,6 +4,8 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+permissions:
+  contents: read
 jobs:
   check:
     runs-on: ubuntu-latest
@@ -16,25 +18,20 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Install dependencies
-        run: python -m pip install -r requirements.txt
-      - name: Install ruff
-        run: python -m pip install ruff
+      - name: Install
+        run: python -m pip install -r requirements.txt ruff==0.17.4
       - name: Lint (ruff, scope in ruff.toml)
         run: ruff check .
-      - name: scaffold smoke test
-        run: python tests/test_smoke.py
-      - name: Learn tests
-        run: python tests/test_learn_multimodal.py
-      - name: Build tests
-        run: python tests/test_build_qa.py
-      - name: Learn runner
-        run: python level-1-learn/run_learn.py
-      - name: Build runner
-        run: python level-2-build/run_build.py
-      - name: Deep tests
-        run: python tests/test_deep_eval.py
-      - name: Deep runner
-        run: python level-3-deep/run_deep.py
-      - name: Analysis tests (seeds, paired statistics)
-        run: python tests/test_analysis.py
+      - name: Layout check (required files, abstract, headline traced, no public grade)
+        run: python tests/test_smoke.py -v
+      - name: All tests (run as scripts)
+        run: for t in tests/test_*.py; do echo "== $t"; python "$t" || exit 1; done
+      - name: Results regenerate unchanged from the code and seeds
+        run: |
+          python level-1-learn/run_learn.py > /dev/null
+          python level-2-build/run_build.py > /dev/null
+          python level-3-deep/run_deep.py > /dev/null
+          python analysis/run_seeds.py > /dev/null
+          python analysis/paired_stats.py > /dev/null
+          python analysis/count_baseline.py > /dev/null
+          git diff --exit-code -- level-1-learn/results_learn.json level-2-build/results_build.json level-3-deep/results_deep.json analysis/
