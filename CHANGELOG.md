@@ -8,6 +8,12 @@ under the portfolio standard v2 yet.
 ## [Unreleased]
 
 ### Changed
+- 2026-11-08: Applied an independent review. The README headline now
+  names both vision wins (colour 0.750 and colour-plus-shape 0.375,
+  against text 0.000) and compares counting like with like: 0.250
+  against the region count's 0.750 on all 24 count questions, 0.000
+  against 0.667 on the 18 multi-item ones. REPORT.md Q4, the blog and
+  LinkedIn drafts match; the smoke test checks the new numbers.
 - 2026-11-08: Restructured to the portfolio standard v2. README is the
   abstract (question, headline with its interval, field, job family,
   verdict: Functional, not pre-registered). PROPOSAL.md (unlocked
