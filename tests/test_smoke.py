@@ -45,10 +45,16 @@ class LayoutTests(unittest.TestCase):
         deep, stats, count = (load("level-3-deep/results_deep.json"), load("analysis/results_stats.json"),
                               load("analysis/results_count_baseline.json"))
         lo, hi = stats["overall"]["vision_em_ci95"]
+        multi = [c for c in count["per_case"] if c["item_count"] > 1]
+        self.assertEqual(len(multi), deep["vision_by_item_group"]["count_multi"]["cases"])
         for value in (deep["overall"]["vision_exact_match"], lo, hi, deep["overall"]["text_exact_match"],
                       deep["per_question_type"]["colour"]["vision_exact_match"],
                       deep["per_question_type"]["colour"]["text_exact_match"],
-                      deep["vision_by_item_group"]["count_multi"]["vision_exact_match"], count["exact_match"]):
+                      deep["per_question_type"]["both"]["vision_exact_match"],
+                      deep["per_question_type"]["both"]["text_exact_match"],
+                      deep["per_question_type"]["count"]["vision_exact_match"], count["exact_match"],
+                      deep["vision_by_item_group"]["count_multi"]["vision_exact_match"],
+                      sum(c["exact_match"] for c in multi) / len(multi)):
             self.assertIn(f"{value:.3f}", headline)
         self.assertEqual(deep["eval_cases"], 144)
         self.assertFalse(deep["vlm_used"])
