@@ -99,7 +99,7 @@ export default function App() {
   useReveal();
   const [model, setModel] = useState(null); // { params, seed, steps } once the trainer has run
   return (
-    <div className="wrap">
+    <div className="wrap"><a className="skip" href="#top">Skip to content</a>
       <MenuBar />
       <div className="glow" aria-hidden="true" />
       <Hero />
@@ -116,7 +116,7 @@ export default function App() {
       <footer>
         <a href={REPO}>Repository</a> · <a href={`${REPO}/releases`}>Releases</a> · <a href={`${REPO}/actions`}>CI</a> · Code Apache-2.0.
         <br />Recorded numbers are read from <code>level-*/results_*.json</code> and <code>analysis/results_*.json</code> at build time; everything marked live runs in your browser on synthetic data.
-      </footer>
+      <nav className="support" aria-label="Support this work"><a href="https://github.com/sponsors/JesunAhmadUshno">Sponsor this work</a><a href="https://github.com/sponsors/JesunAhmadUshno">Donate</a><a href="https://buymeacoffee.com/jesun">Buy Me a Coffee</a><a href="https://calendly.com/jesunahmadushno/30min">Work with me</a></nav></footer>
     </div>
   );
 }
