@@ -41,7 +41,7 @@ documents, plus the counting failure class written up in depth.
 
 ## The main result
 
-On synthetic data only, with no VLM downloaded or run and the Learn encoder as a labelled stand-in, Deep scored vision exact match 0.354 against text exact match 0.667 on 144 synthetic document cases, with vision paying on colour at 0.750 against text 0.000 and vision counting at 0.250 overall and 0.000 on multi-item documents.
+On synthetic data only, with no VLM downloaded or run and the Learn encoder as a labelled stand-in, Deep scored vision exact match 0.354 against text exact match 0.667 on 144 synthetic document cases, with vision paying on colour at 0.750 against text 0.000 and on colour-plus-shape at 0.375 against 0.000, and vision counting at 0.250 overall and 0.000 on multi-item documents.
 
 In detail. Learn: train loss fell from 3.124841 to 0.005265
 over 2,500 steps, held-out image-to-text Recall at 1 rose from
