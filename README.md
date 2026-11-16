@@ -5,7 +5,7 @@ against a text-only parser, and why does the vision route fail at
 counting? (The scaffold asked this of a real vision-language model;
 none was ever run, so the vision route here is a stand-in.)
 
-**Headline.** On 144 synthetic document questions, a stand-in vision route (a NumPy CLIP-style encoder plus a keyword composer; no real VLM ran) scored exact match 0.354 (document-bootstrap 95% CI 0.229 to 0.486) against 0.667 for a text-only parser; it won only on colour (0.750 against 0.000) and scored 0.000 on counting multi-item documents, while a non-learned region count on the same pixels scored 0.750.
+**Headline.** On 144 synthetic document questions, a stand-in vision route (a NumPy CLIP-style encoder plus a keyword composer; no real VLM ran) scored exact match 0.354 (document-bootstrap 95% CI 0.229 to 0.486) against 0.667 for a text-only parser; it won only where the answer is in the pixels: colour (0.750 against 0.000) and colour-plus-shape (0.375 against 0.000). On counting it scored 0.250 against 0.750 for a non-learned region count on the same pixels across all 24 count questions, and 0.000 against 0.667 on the 18 multi-item ones, where the region count misses only the three-item figures because their shapes touch and merge.
 
 **Field.** ML and AI research. **Job family.** Applied AI and
 multimodal engineering (vision-language systems and their evaluation).

@@ -28,7 +28,7 @@ That proves the service loop, not VLM skill.
 
 Deep: on 144 synthetic document cases, vision exact match
 0.354 against text 0.667. Vision pays on colour, 0.75 against
-text 0.0. It loses on shape, count, title, and left_shape.
+text 0.0, and on colour-plus-shape, 0.375 against 0.0. It loses on shape, count, title, and left_shape.
 The counting failure is the finding I keep coming back to:
 the vision count is constant one, 0.25 overall and 0.0 on
 multi-item documents.
