@@ -3,4 +3,4 @@
 # the recorded v1.0 runs (Learn README: Python 3.12.3, NumPy 1.26.4).
 # Everything else is the Python standard library.
 numpy==1.26.4; python_version < "3.12"
-numpy==2.5.4; python_version >= "3.12"
+numpy==2.5.5; python_version >= "3.12"
